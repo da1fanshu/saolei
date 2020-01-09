@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>开奖走势</title>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" type="text/css" href="/static/aui/css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="/static/aui/css/aui-slide.css" />
+    <link rel="stylesheet" href="/static/aui/css/style.css">
+    <script src="/static/aui/res/iconfont.js"></script>
+  	<style>
+      .moves{display: inherit;line-height: 2.2rem;}
+      .zs_list{
+      	width: 1.2rem;
+        height: 1.2rem;
+        background-color: #FFA500;
+        margin-top: .5rem;
+        line-height: 1.1rem;
+        text-align: center;
+        color: #fff;
+        border-radius: 5px;
+            margin-left: .1rem;
+      }
+   	</style>
+</head>
+<body style="background-color: #f5f5f5">
+
+    <header class="aui-bar aui-bar-nav">
+        <a class="aui-pull-left aui-btn" href="{:url("Index/index")}">
+            <span class="aui-iconfont aui-icon-left"></span>返回
+        </a>
+        <div class="aui-title">开奖走势</div>
+    </header>
+    <div class="game_paylist">
+        <ul class="aui-list aui-list-in">
+          <foreach name="openlist" item="vo">
+                <li  class="aui-list-item" style="margin-bottom: .6rem;">
+                    <div class="ui-list-info moves">
+                        <div class="zs_text">第{$vo.term}期 &nbsp;</div>
+                        <div class="zs_list">{$vo.num.4}</div>
+                        <div class="zs_list">{$vo.num.6}</div>
+                        <div class="zs_list">{$vo.num.8}</div>
+                        <div class="zs_list" style="background-color:#FF0000">
+                      	<?php 
+							$newdxkj=$vo['num'][4]+$vo['num'][6]+$vo['num'][8]; 
+							if($newdxkj>=0 && $newdxkj<=12){
+                                $ss="小";
+                            }
+                            if($newdxkj>=13 && $newdxkj<=14){
+                                $ss="合";
+                            }
+                            if($newdxkj>=15 && $newdxkj<=27){
+                                $ss="大";
+                            }
+						?>
+                         {$ss}
+                      	</div>
+                    </div>
+                </li>
+      		  </foreach>
+        </ul>
+    </div>
+    <!--设计底部-->
+    <div class="footer">
+            <a href="{:url("Index/index")}">
+            <div>
+                <p>
+                    <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                        <use xlink:href="#icon-shouye"></use>
+                    </svg>
+                </p>
+                首页
+            </div>
+            </a>
+            <a href="{:url("Index/daili")}">
+            <div>
+                <p>
+                    <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                        <use xlink:href="#icon-zichan"></use>
+                    </svg>
+                </p>
+                推广
+            </div>
+            </a>
+            <a href="{:url("Index/paycode")}">
+            <div>
+                <p>
+                    <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                        <use xlink:href="#icon-chuangjianqianbao"></use>
+                    </svg>
+                </p>
+                充值
+            </div>
+            </a>
+            <a href="{:url("Index/user")}">
+            <div>
+                    <p>
+                        <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                            <use xlink:href="#icon-wode"></use>
+                        </svg>
+                    </p>
+                    我的
+            </div>
+            </a>
+        </div>
+</body>
+<script type="text/javascript" src="/static/aui/script/api.js"></script>
+<script type="text/javascript" src="/static/aui/script/aui-slide.js"></script>
+<script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
+        <title>QQ</title>
+        <!-- 引入 FrozenUI -->
+        <link rel="stylesheet" href="/static/newgame/css/frozenui.css"/>
+        <link rel="stylesheet" href="/static/newgame/css/newindex.css">
+        <script src="/static/newgame/js/jquery-1.12.3-min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/static/newgame/js/layer_mobile/layer.js"></script>
+    </head>
+<section class="ui-panel  ">
+          <h2 class="ui-arrowlink">我的记录 <span class="ui-panel-subtitle"> &nbsp;最新10条</span></h2>
+			<ul class="ui-list ui-list-single ui-border-tb">
+              <foreach name="xzlist" item="vo">
+                <li class="ui-border-t">
+                    <div class="ui-list-info">
+                        <div class="zs_text">第{$vo.term}期 &nbsp;</div>
+               
+                                <div class="zs_text">竞猜:{$xztypesss[$vo['account']]} &nbsp;</div>
+                        
+                        <eq name="vo.state" value="1">
+                          <div class="zs_text" style="color:#EE6363">
+                            已开奖
+                            &nbsp;</div>
+                        </eq>
+                        <eq name="vo.state" value="0">
+                          <div class="zs_text" style="color:#00CD00">
+                         	未开奖
+                          &nbsp;</div>
+                        </eq>
+                      	<gt  name="vo.zj" value="0">
+                          	<div class="zs_text">盈利{$vo.zj}&nbsp;</div>
+                        </gt>
+                      	<elt  name="vo.zj" value="0">
+                          	<div class="zs_text">亏损{$vo.money}&nbsp;</div>
+                        </elt>
+                      
+                      	<gt  name="vo.zj" value="0">
+                          	<div class="zs_list" style="background-color:#EE2C2C">赚</div>
+                        </gt>
+                      	<elt  name="vo.zj" value="0">
+                          	<div class="zs_list" style="background-color:#00EE00">亏</div>
+                        </elt>
+                      
+                      	
+                    </div>
+                </li>
+              </foreach>
+          </ul>
+          <div class="ui-panel-more ui-border-tb">
+              <span class="ui-arrowlink">查看全部</span>
+              </div>
+</section>
+  </html>

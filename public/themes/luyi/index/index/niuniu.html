@@ -1,0 +1,317 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>游戏</title>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" type="text/css" href="/static/aui/css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="/static/aui/css/aui-slide.css" />
+    <link rel="stylesheet" href="/static/aui/css/style.css">
+    <script src="/static/aui/res/iconfont.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  	<style>
+      .gameset_box{
+       	height:14rem; 
+      }
+      .set_xuantype{
+      	height:5.1rem;
+      }
+      .set_boxhead{
+      	height:1.8rem;
+      }
+      .nn_num{
+      	    overflow: hidden;
+    		position: relative;
+      }
+      .nn_num em{
+        width:2rem;
+        height:1.3rem;
+      	font-size:10px;
+        position: absolute;
+        right:-15px;
+        top:-8px;
+        text-align: center;
+        font-family: "黑体";
+        color:#fff;
+        background-color: #e68130;
+        -moz-transform:rotate(45deg);
+        -webkit-transform:rotate(45deg);
+        -o-transform:rotate(45deg);
+        -ms-transform:rotate(45deg);
+        transform:rotate(45deg);
+      }
+  	</style>
+  		  <style>
+    .nn_num{
+      	height:2rem;
+    	padding:0;
+      	border:0;
+    }
+    .set_xuantype>.on{
+      border:3px solid #FF3030;
+      background-color: #FF3030;
+      color: #fff;
+	}
+    .new_n1{
+    	 background:url(/static/mmp_ff/n1.png)no-repeat center top;
+      	 background-repeat:no-repeat;
+    	background-position:center;
+      	background-size:122%;
+    }
+    .new_n2{
+    	 background:url(/static/mmp_ff/n2.png)no-repeat center top;
+      	 background-repeat:no-repeat;
+    	background-position:center;
+      	background-size:122%;
+    }
+    .new_n3{
+    	 background:url(/static/mmp_ff/n3.png)no-repeat center top;
+      	 background-repeat:no-repeat;
+    	background-position:center;
+      	background-size:122%;
+    }
+	.new_n4{
+    	 background:url(/static/mmp_ff/n4.png)no-repeat center top;
+      	 background-repeat:no-repeat;
+    	background-position:center;
+      	background-size:122%;
+    }
+    .new_n5{
+    	 background:url(/static/mmp_ff/n5.png)no-repeat center top;
+      	 background-repeat:no-repeat;
+    	background-position:center;
+      	background-size:122%;
+    }
+            
+    .new_n6{
+    	 background:url(/static/mmp_ff/n6.png)no-repeat center top;
+      	 background-repeat:no-repeat;
+    	background-position:center;
+      	background-size:122%;
+    }
+
+     .new_n7{
+    	 background:url(/static/mmp_ff/n7.png)no-repeat center top;
+      	 background-repeat:no-repeat;
+    	background-position:center;
+      	background-size:122%;
+    }
+     
+     .new_n8{
+    	 background:url(/static/mmp_ff/n8.png)no-repeat center top;
+      	 background-repeat:no-repeat;
+    	background-position:center;
+      	background-size:122%;
+    }
+     
+  </style>
+</head>
+<body style="background-color: #F5F5F5">
+        <header class="aui-bar aui-bar-nav">
+                <a class="aui-pull-left aui-btn"  href="{:url("Index/index")}">
+                    <span class="aui-iconfont aui-icon-left"></span>返回
+                </a>
+                <div class="aui-title">单人牛牛</div>
+                <a class="aui-pull-right aui-btn" href="{:url("Index/move")}"> 
+                        <svg class="icon svg-icon zsicon" aria-hidden="true">
+                                <use xlink:href="#icon-huabanfuben"></use>
+                        </svg>
+                </a>
+        </header>
+
+    <div class="gamebox_head">
+        <div class="opentrue">
+            <div class="opentrue_l" style="border-right: 2px solid #DCDCDC;">
+                距<span>{$kjterm}</span>期开奖
+                <p class="font18"><span class="kjtime" id="time">{$open.kjtimes}</span>秒</p>
+            </div>
+            <div class="opentrue_r">
+                <div class="left uimg" style="width:40%;">
+                        <img src="{$user.avatar}" alt="">
+                </div>
+ <div class="left uinfo" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width: 50%;">
+   <p>{$user.user_login}</p>
+                        <svg class="icon svg-icon kjicon" aria-hidden="true">
+                                <use xlink:href="#icon--jinbi"></use>
+                        </svg>
+                        <span class="userjinesss">{$user.balance}</span>
+                </div>
+            </div>
+        </div>
+        <div class="open_kjnum">
+            <div class="kjing">
+                <div class="left xzingnum" id="kjinfos">第<span class="kjingnum" id="kjinfoss">{$open.0.term}</span>期</div>
+                <div class="left kjnum_head">
+                    <div>{$kjnum.2}</div>
+                    <div>{$kjnum.3}</div>
+                    <div style="background-color: #FF3030">{$kjnum.4}</div>
+                    <div style="margin-left:10px;background-color: #62cb3d;width: 1.9rem;">
+						牛{$kjnum.4}
+                  	</div>
+                </div>
+            </div>
+            <div class="kjing_view" style="display:none">
+                <h2>正在开奖中.....</h2>
+            </div>
+        </div>
+    </div>
+    <div class="game_xzbox">
+                    <svg class="icon svg-icon ggicon" aria-hidden="true">
+                        <use xlink:href="#icon-QQ"></use>
+                    </svg>
+                    <marquee style="width:91%" behavior="scroll" direction="left">
+                            {$conf.site_icp}
+                    </marquee>
+    </div>
+    <div class="gameset_box">
+        <div class="set_boxhead">
+            <span><img src="/static/mmp_ff/tx.png" style="display: inline-block;height:.67rem;padding-top:0rem"> www.qq-ssc.com</span>
+            <p tapmode onclick="openDialog('text')" style="margin-top: 2px;color:#0000CD" class="right">
+                <svg class="icon svg-icon owicon" aria-hidden="true">
+                            <use xlink:href="#icon-bangzhushuoming"></use>
+                </svg>
+                游戏说明
+            </p>
+        </div>
+        <div class="set_xuantype">
+          <div class="nn_num on new_n1" data="n1">
+                <em>5.0倍</em>
+            </div>
+            <div class="nn_num new_n2"  data="n2">
+                <em>4.0倍</em>
+            </div>
+            <div class="nn_num new_n3" data="n3">
+                <em>3.0倍</em>
+            </div>
+            <div class="nn_num new_n4" data="n4">
+                <em>2.3倍</em>
+            </div>
+          	 <div class="nn_num new_n5" data="n5">
+                <em>2.0倍</em>
+            </div>
+            <div class="nn_num new_n6"  data="n6">
+                <em>1.7倍</em>
+            </div>
+            <div class="nn_num new_n7" data="n7">
+                <em>1.5倍</em>
+            </div>
+            <div class="nn_num new_n8" data="n8">
+                <em>1.3倍</em>
+            </div>
+        </div>
+        <div class="set_moneyinfo">
+            <div class="left"> <p>下注金额:<span class="jinecolor xzjine">1.00</span></p> </div>
+            <div class="right"> <p>预计收益:<span class="jinecolor yjsy">3.00</span></p> </div>
+        </div>
+            <div class="aui-bar aui-bar-btn" style="width:90%;z-index:1;" type="count" id="demo">
+                    <div class="aui-bar-btn-item aui-font-size-20 jian">
+                        <i class="aui-iconfont aui-icon-minus"></i>
+                    </div>
+                    <div class="aui-bar-btn-item">
+                        <input type="number" autoComplete='off' class="aui-input aui-text-center" id="count" value="1" max="100" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength = 1>
+                    </div>
+                    <div class="aui-bar-btn-item aui-font-size-20 jia">
+                        <i class="aui-iconfont aui-icon-plus"></i>
+                    </div>
+            </div>
+      <eq name="newpay" value="1">
+       		 <div class="set_postnum"> 
+                <p><div class="aui-btn aui-btn-primary aui-btn-block aui-btn-outlined " style="height: 2.2rem;line-height: 2.25rem;color: #f01414 !important;
+    			border: 1px solid #f01414 !important;">本期已下注</div></p>
+        	</div>
+        <else/>
+           <div class="set_postnum"> 
+                <p><div class="aui-btn aui-btn-primary aui-btn-block aui-btn-outlined postgetnn" style="height: 2.2rem;line-height: 2.25rem;">开始竞猜</div></p>
+        	</div>
+        </eq>
+    </div>
+	 <div style="margin-top:3px;margin-bottom: 60px;">
+                <iframe id="userxzlist" style="width:100%;border: 0;" frameborder="0" onload="this.height=this.contentWindow.document.body.scrollHeight"  src="{:url("Index/userxzlist")}"></iframe>
+      </div>
+
+    <!--设计底部-->
+   <div class="footer">
+        <a href="{:url("Index/index")}">
+        <div>
+            <p>
+                <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                    <use xlink:href="#icon-shouye"></use>
+                </svg>
+            </p>
+            首页
+        </div>
+        </a>
+        <a href="{:url("Index/paycode")}">
+        <div>
+            <p>
+                <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                    <use xlink:href="#icon-zichan"></use>
+                </svg>
+            </p>
+            推广
+        </div>
+        </a>
+        <a href="{:url("Index/paycode")}">
+        <div>
+            <p>
+                <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                    <use xlink:href="#icon-chuangjianqianbao"></use>
+                </svg>
+            </p>
+            充值
+        </div>
+        </a>
+        <a href="{:url("Index/user")}">
+        <div>
+                <p>
+                    <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                        <use xlink:href="#icon-wode"></use>
+                    </svg>
+                </p>
+                我的
+        </div>
+        </a>
+    </div>
+</body>
+<script>
+    dqterm={$open.0.term};
+    usermoney={$user.balance};
+  	newpays={$newpay};
+</script>
+<script type="text/javascript" src="/static/aui/script/aui-dialog.js" ></script>
+<script type="text/javascript" src="/static/aui/script/aui-toast.js" ></script>
+<script type="text/javascript" src="/static/aui/script/api.js"></script>
+<script src="/static/aui/res/newgame.js"></script>
+<script type="text/javascript">
+    var gameshuoming="开奖规则：从北京时间凌晨00：00分起每1分钟一期每日1440期号码计算规则:依照官方实时统计的在线人数数字的尾数后3位作为结果！<br>根据最后一位最为开奖依据<br>下注牛比开奖牛大即为中奖<br>每次下注收取下注金额1成的手续费<br>牛1和牛2赔率根据每日开奖几率计算赔率其它牛赔率固定";
+    var dialog = new auiDialog({})
+    function openDialog(type){
+        dialog.alert({
+                    title:"官方开奖",
+                    msg:gameshuoming,
+                    buttons:['我知道了']
+                },function(ret){
+                    console.log(ret)
+        })
+    }
+
+    apiready = function(){
+        api.parseTapmode();
+    }
+    var toast = new auiToast({
+    })
+    function showDefault(text){
+        toast.fail({
+               title:text,
+               duration:2000
+        });
+    }
+  	function sesstrue(text){
+        toast.success({
+              title:text,
+              duration:2000
+        });
+    }
+</script>
+</html>

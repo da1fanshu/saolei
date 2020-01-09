@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>推广中心</title>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" type="text/css" href="/static/aui/css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="/static/aui/css/aui-slide.css" />
+    <link rel="stylesheet" href="/static/aui/css/style.css">
+    <script src="/static/aui/res/iconfont.js"></script>
+</head>
+<body style="background-color: #f5f5f5">
+
+    <header class="aui-bar aui-bar-nav">
+        <a class="aui-pull-left aui-btn"  href="{:url("Index/index")}">
+            <span class="aui-iconfont aui-icon-left"></span>返回
+        </a>
+        <div class="aui-title">推广中心</div>
+    </header>
+    <div class="">
+        <div>
+                <ul class="aui-list aui-media-list">
+                        <li class="aui-list-item aui-list-item-middle">
+                            <div class="aui-media-list-item-inner">
+                                <div class="aui-list-item-media" style="width: 3rem;">
+                                    <img src="{$user.avatar}" class="aui-img-round aui-list-img-sm">
+                                </div>
+                                <div class="aui-list-item-inner aui-list-item-arrow">
+                                    <div class="aui-list-item-text">
+                                        <div class="aui-list-item-title aui-font-size-14">{$user.user_nickname}</div>
+                                    </div>
+                                    <div class="aui-list-item-text">
+                                        ID:{$user.id} 佣金余额:{$user.score}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="daili_info">
+                                <div>
+                                    累计佣金: <span class="jinecolor">{$sumyj}</span>
+                                </div>
+                                <div>
+                                    今日佣金: <span class="jinecolor">{$daysumyj}</span>
+                                </div>
+                                <div>
+                                    总人数: <span class="jinecolor">{$zren}</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+        </div>
+    </div>
+    <div style="text-align: center;padding-top: .2rem"><h3 style="color: #f01414;">分分佣金</h3></div>
+    <div class="daili_ren">
+        <div class="font15">一级佣金</div>
+        <div class="font15">二级佣金</div>
+        <div class="font15">三级佣金</div>
+        <div class="font15">四级佣金</div>
+        <div class="font15">五级佣金</div>
+        <div>{$conf.site_admin_yj0}%</div>
+        <div>{$conf.site_admin_yj1}%</div>
+        <div>{$conf.site_admin_yj2}%</div>
+        <div>{$conf.site_admin_yj3}%</div>
+        <div>{$conf.site_admin_yj4}% </div>
+    </div>
+  	<div style="text-align: center;padding-top: .2rem"><h3 style="color: #f01414;">豹子佣金</h3></div>
+    <div class="daili_ren">
+        <div class="font15">一级佣金</div>
+        <div class="font15">二级佣金</div>
+        <div class="font15">三级佣金</div>
+        <div class="font15">四级佣金</div>
+        <div class="font15">五级佣金</div>
+        <div>{$conf.site_admin_bzyj0}%</div>
+        <div>{$conf.site_admin_bzyj1}%</div>
+        <div>{$conf.site_admin_bzyj2}%</div>
+        <div>{$conf.site_admin_bzyj3}%</div>
+        <div>{$conf.site_admin_bzyj4}% </div>
+    </div>
+    <div style="height: 1rem;"></div>
+    <div style="text-align: center;padding-top: .2rem"><h3 style="color: #f01414;">团队人数</h3></div>
+    <div class="daili_ren">
+        <div class="font15">一级人数</div>
+        <div class="font15">二级人数</div>
+        <div class="font15">三级人数</div>
+        <div class="font15">四级人数</div>
+        <div class="font15">五级人数</div>
+        <div>{$ret.0}</div>
+        <div>{$ret.1}</div>
+        <div>{$ret.2}</div>
+        <div>{$ret.3}</div>
+        <div>{$ret.4}</div>
+    </div>
+    <div class="daili_btn"  style="margin-bottom: 10rem;">
+        <div class="left">
+            <a href="{:url("Index/yjjl")}"><p><div class="aui-btn aui-btn-primary">我的佣金明细</div></p>
+            </a>
+        </div>
+        <div class="right">
+            <a href="{:url("Index/dailiimg")}">
+                <p><div class="aui-btn aui-btn-primary">推广二维码</div></p>
+            </a>
+        </div>
+    </div>
+    <!--设计底部-->
+   <div class="footer">
+        <a href="{:url("Index/index")}">
+        <div>
+            <p>
+                <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                    <use xlink:href="#icon-shouye"></use>
+                </svg>
+            </p>
+            首页
+        </div>
+        </a>
+        <a href="{:url("Index/daili")}">
+        <div>
+            <p>
+                <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                    <use xlink:href="#icon-zichan"></use>
+                </svg>
+            </p>
+            推广
+        </div>
+        </a>
+        <a href="{:url("Index/paycode")}">
+        <div>
+            <p>
+                <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                    <use xlink:href="#icon-chuangjianqianbao"></use>
+                </svg>
+            </p>
+            充值
+        </div>
+        </a>
+        <a href="{:url("Index/user")}">
+        <div>
+                <p>
+                    <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                        <use xlink:href="#icon-wode"></use>
+                    </svg>
+                </p>
+                我的
+        </div>
+        </a>
+    </div>
+</body>
+<script type="text/javascript" src="/static/aui/script/api.js"></script>
+<script type="text/javascript" src="/static/aui/script/aui-slide.js"></script>
+<script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+<script>
+$(".pay").click(function(){
+    $(".with_view").hide();
+    $(".pay_view").show();
+    $(".with").removeClass("aui-active");
+    $(".pay").addClass("aui-active");
+});
+$(".with").click(function(){
+    $(".pay_view").hide();
+    $(".with_view").show();
+    $(".pay").removeClass("aui-active");
+    $(".with").addClass("aui-active");
+});
+</script>
+</html>

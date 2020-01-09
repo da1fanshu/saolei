@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>会员提款</title>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" type="text/css" href="/static/aui/css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="/static/aui/css/aui-slide.css" />
+    <link rel="stylesheet" href="/static/aui/css/style.css">
+    <script src="/static/aui/res/iconfont.js"></script>
+</head>
+<body style="background-color: #f5f5f5">
+
+    <header class="aui-bar aui-bar-nav">
+                <a class="aui-pull-left aui-btn"  href="{:url("Index/index")}">
+                    <span class="aui-iconfont aui-icon-left"></span>
+                </a>
+                <div class="aui-title">
+                    <div class="aui-bar aui-bar-btn aui-bar-btn-round">
+                        <div class="pay aui-bar-btn-item aui-active">余额提现</div>
+                        <div class="with aui-bar-btn-item">佣金提现</div>    
+                    </div>
+                </div>
+    </header>
+    <section class="aui-content" id="user-info" style="color:#fff">
+        <div style="background-color: #00BFFF" class="aui-list aui-media-list aui-list-noborder" >
+            <div class="aui-list-item aui-list-item-middle">
+                <div class="aui-media-list-item-inner ">
+                    <div class="aui-list-item-media" style="width:3rem;">
+                        <img src="{$user.avatar}" class="aui-img-round" >
+                    </div>
+                    <div class="aui-list-item-inner aui-list-item-arrow" >
+                        <div class="aui-list-item-text text-white aui-font-size-18"  style="color:#fff">{$user.user_nickname}</div>
+                        <div class="aui-list-item-text text-white"  style="color:#fff">
+                           <div><i class="aui-iconfont aui-icon-my aui-font-size-14"> ID: </i> {$user.id}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="money_with">
+            <div class="pay_cont">
+                    <h3 style="margin-top:.3rem;">会员提款</h3>
+                    <div class="with_box">
+                    <form action="{:url("pay/with")}" id="with" method="post">
+                        <p>我的余额: <span class="jinecolor">{$user.balance}</span> 红包余额: <span class="jinecolor">{$user.coin}.00</span></p>
+                        <div style="height:.3rem"></div>
+                        <hr>
+                    	<span>提现金额:</span>&nbsp; <input type="text"  name="money"  placeholder="{$user.balance}" value="{$user.balance}" oninput="value=value.replace(/[^\d]/g,'')"> 
+                        <input  type="text" name="uid" id="" value="{$user.id}" style="display:none">
+                      </form>
+                      <div style="height:.8rem"></div>
+                      <p>温馨提示:每次提现收取2%微信即时到账交易费</p>
+                      <p>提现秒到账就是这么任性！</p>
+                    </div>
+            </div>
+            <div class="pay_btn">
+                    <p><div class="aui-btn aui-btn-info aui-btn-block paypost">余额提现</p></div>
+            </div>
+    </div>
+    <div class="huobi_with" style="display:none">
+            <div class="pay_cont">
+                    <h3 style="margin-top:.3rem;">佣金提现</h3>
+                    <div class="with_box">
+                        <p>我的佣金: <span class="jinecolor">{$user.score}</span></p>
+                        <div style="height:.3rem"></div>
+                        <hr>
+                    <form action="{:url("pay/yjtixian")}" id="yjtixian" method="post">
+                    <span>提现金额:</span>&nbsp; <input type="text" name="money" placeholder="{$user.score}" value="{$user.score}" oninput="value=value.replace(/[^\d]/g,'')"> 
+                    <input  type="text" name="uid" id="" value="{$user.id}" style="display:none">
+                    </form>
+                    </div>
+                </div>
+                <div class="pay_btn">
+                    <p><div class="aui-btn aui-btn-info aui-btn-block paypostyj">佣金提现</p></div>
+                </div>
+    </div>
+    <!--设计底部-->
+    <div class="footer">
+            <a href="{:url("Index/index")}">
+            <div>
+                <p>
+                    <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                        <use xlink:href="#icon-shouye"></use>
+                    </svg>
+                </p>
+                首页
+            </div>
+            </a>
+            <a href="{:url("Index/daili")}">
+            <div>
+                <p>
+                    <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                        <use xlink:href="#icon-zichan"></use>
+                    </svg>
+                </p>
+                推广
+            </div>
+            </a>
+            <a href="{:url("Index/paycode")}">
+            <div>
+                <p>
+                    <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                        <use xlink:href="#icon-chuangjianqianbao"></use>
+                    </svg>
+                </p>
+                充值
+            </div>
+            </a>
+            <a href="{:url("Index/user")}">
+            <div>
+                    <p>
+                        <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                            <use xlink:href="#icon-wode"></use>
+                        </svg>
+                    </p>
+                    我的
+            </div>
+            </a>
+        </div>
+</body>
+<script type="text/javascript" src="/static/aui/script/api.js"></script>
+<script type="text/javascript" src="/static/aui/script/aui-slide.js"></script>
+<script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript" src="/static/aui/script/aui-toast.js" ></script>
+
+<script>
+  		  apiready = function(){
+              api.parseTapmode();
+          }
+          var toast = new auiToast({
+          })
+  	  	function sesstrue(text){
+            toast.success({
+                  title:text,
+                  duration:2000
+            });
+        }
+        $(".pay").click(function(){
+            $(".huobi_with").hide();
+            $(".money_with").show();
+            $(".with").removeClass("aui-active");
+            $(".pay").addClass("aui-active");
+        });
+        $(".with").click(function(){
+            $(".money_with").hide();
+            $(".huobi_with").show();
+            $(".pay").removeClass("aui-active");
+            $(".with").addClass("aui-active");
+        });
+  		$(".paypost").click(function(){
+                $("#with").submit(); 
+          		sesstrue('已提交2秒后到账');
+            });
+      	$(".paypostyj").click(function(){
+                $("#yjtixian").submit(); 
+          		sesstrue('已提交2秒后到账');
+        });
+</script>
+
+</html>

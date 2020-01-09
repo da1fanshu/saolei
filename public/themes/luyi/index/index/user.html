@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>个人中心</title>
+	<link rel="stylesheet" type="text/css" href="/static/aui/css/aui.css" />
+	<link rel="stylesheet" href="/static/aui/css/style.css">
+	<script src="/static/aui/res/iconfont.js"></script>
+    <style type="text/css">
+        .text-white {
+            color: #ffffff !important;
+        }
+        .aui-grid [class*=aui-col-] {
+            padding: 0.75rem 0;
+        }
+      .aui-list-item a{    display: inherit;}
+    </style>
+</head>
+<body>
+    <!-- 顶部 -->
+    <section class="aui-content" id="user-info">
+        <div style="background-color: #f01414" class="aui-list aui-media-list aui-list-noborder" >
+            <div class="aui-list-item aui-list-item-middle">
+                <div class="aui-media-list-item-inner ">
+                    <div class="aui-list-item-media" style="width:3rem;">
+                        <img src="{$user.avatar}" class="aui-img-round" >
+                    </div>
+                    <div class="aui-list-item-inner aui-list-item-arrow">
+                        <div class="aui-list-item-text text-white aui-font-size-18">{$user.user_nickname}</div>
+                        <div class="aui-list-item-text text-white">
+                           <div><i class="aui-iconfont aui-icon-my aui-font-size-14"> ID: </i> {$user.id}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="aui-content aui-grid aui-margin-b-15">
+        <div class="aui-row">
+            <div class="aui-col-xs-4 aui-border-r">
+                <big class="aui-text-warning">{$user.balance}<small>分</small></big>
+                <div class="aui-gird-lable aui-font-size-12">余额</div>
+            </div>
+            <div class="aui-col-xs-4 aui-border-r">
+                <big class="aui-text-danger">{$sumyj}<small>分</small></big>
+                <div class="aui-gird-lable aui-font-size-12">赚金</div>
+            </div>
+            <div class="aui-col-xs-4">
+                <big class="aui-text-success">{$user.score}<small> 分</small></big>
+                <div class="aui-gird-lable aui-font-size-12">佣金</div>
+            </div>
+        </div>
+    </section>
+    <section class="aui-content">
+        <ul class="aui-list aui-list-in aui-margin-b-15">
+            <li class="aui-list-item">
+               <a href="{:url("Index/daili")}">
+                <div class="aui-list-item-label-icon">
+                    <i class="aui-iconfont aui-icon-share aui-text-info"></i>
+                </div>
+                <div class="aui-list-item-inner aui-list-item-arrow">
+                    <div class="aui-list-item-title">推广中心</div>
+                </div>
+               </a>
+            </li>
+            <li class="aui-list-item">
+              <a href="{:url("Index/jiaoyi")}">
+                <div class="aui-list-item-label-icon">
+                    <i class="aui-iconfont aui-icon-like aui-text-danger"></i>
+                </div>
+                <div class="aui-list-item-inner aui-list-item-arrow">
+                    <div class="aui-list-item-title">资金记录</div>
+                </div>
+              </a>
+            </li>
+            <li class="aui-list-item">
+               <a href="{:url("Index/openjilu")}">
+                <div class="aui-list-item-label-icon">
+                    <i class="aui-iconfont aui-icon-calendar aui-text-info"></i>
+                </div>
+                <div class="aui-list-item-inner aui-list-item-arrow">
+                    <div class="aui-list-item-title">游戏记录</div>
+                </div>
+               	</a>
+            </li>
+        </ul>
+        <ul class="aui-list aui-list-in">
+            <li class="aui-list-item">
+               <a href="{:url("Index/kefu")}">
+                <div class="aui-list-item-label-icon">
+                    <i class="aui-iconfont aui-icon-phone aui-text-info"></i>
+                </div>
+                <div class="aui-list-item-inner aui-list-item-arrow">
+                    <div class="aui-list-item-title">在线客服</div>
+                </div>
+               </a>
+            </li>
+            <li class="aui-list-item">
+              <a href="{:url("Index/with")}">
+                <div class="aui-list-item-label-icon">
+                    <i class="aui-iconfont aui-icon-flag aui-text-warning"></i>
+                </div>
+                <div class="aui-list-item-inner aui-list-item-arrow">
+                    <div class="aui-list-item-title">快速提现</div>
+                </div>
+               </a>
+            </li>
+        </ul>
+    </section>
+    <!--设计底部-->
+   <div class="footer">
+        <a href="{:url("Index/index")}">
+        <div>
+            <p>
+                <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                    <use xlink:href="#icon-shouye"></use>
+                </svg>
+            </p>
+            首页
+        </div>
+        </a>
+        <a href="{:url("Index/daili")}">
+        <div>
+            <p>
+                <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                    <use xlink:href="#icon-zichan"></use>
+                </svg>
+            </p>
+            推广
+        </div>
+        </a>
+        <a href="{:url("Index/paycode")}">
+        <div>
+            <p>
+                <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                    <use xlink:href="#icon-chuangjianqianbao"></use>
+                </svg>
+            </p>
+            充值
+        </div>
+        </a>
+        <a href="{:url("Index/user")}">
+        <div>
+                <p>
+                    <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                        <use xlink:href="#icon-wode"></use>
+                    </svg>
+                </p>
+                我的
+        </div>
+        </a>
+    </div>
+</body>
+<script type="text/javascript" src="/static/aui/script/api.js" ></script>
+<script type="text/javascript">
+    apiready = function () {
+    }
+</script>
+</html>

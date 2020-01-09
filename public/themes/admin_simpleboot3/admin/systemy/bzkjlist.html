@@ -1,0 +1,52 @@
+<include file="public@header"/>
+</head>
+<body>
+<div class="wrap">
+    <ul class="nav nav-tabs">
+        <li class="active"><a>{:lang('USER_INDEXADMIN_INDEX')}</a></li>
+    </ul>
+    <form class="well form-inline margin-top-20" method="post" action="{:url('admin/systemy/orderlist')}">
+        用户ID：
+        <input class="form-control" type="text" name="uid" style="width: 200px;" value="{:input('request.uid')}"
+               placeholder="请输入用户ID">
+	 <input type="submit" class="btn btn-primary" value="搜索" />
+    </form>
+    <form method="post" class="js-ajax-form">
+        <table class="table table-hover table-bordered">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>期号</th>
+              	<th>庄家号码</th>
+              	<th>闲家</th>
+                <th>总下注金额</th>
+              	<th>总中奖金额</th>
+                <th>游戏类型</th>
+                <th>时间</th>
+			
+            </tr>
+            </thead>
+            <tbody>
+            <php>
+                $user_statuses=array("0"=>lang('USER_STATUS_BLOCKED'),"1"=>lang('USER_STATUS_ACTIVATED'),"2"=>lang('USER_STATUS_UNVERIFIED'));
+            </php>
+            <foreach name="list" item="vo">
+                <tr>
+                    <td>{$vo.id}</td>
+                    <td>第{$vo.term}期</td>
+                  	<td>{$vo.num} </td>
+                  	<td>{$vo.num1} </td>
+                    <td>{$vo.money}</td>
+                  	 <td>{$vo.kjmoney}</td>
+                    <td>{$vo.account}</td>
+                  	<td>{:date('Y-m-d H:i:s',$vo['addtime'])}</td>
+                </tr>
+            </foreach>
+            </tbody>
+        </table>
+        <div class="pagination">{$page}</div>
+    </form>
+</div>
+<script src="__STATIC__/js/admin.js"></script>
+</body>
+</html>

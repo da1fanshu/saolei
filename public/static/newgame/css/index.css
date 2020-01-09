@@ -1,0 +1,201 @@
+*{margin:0;padding:0}
+
+li{list-style:none}
+
+img{vertical-align:top;border:none}
+
+/* 清除内外边距 */
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 结构元素 */
+dl, dt, dd, ul, ol, li, /* list elements 列表元素 */
+pre, /* text formatting elements 文本格式元素 */
+fieldset, lengend, button, input, textarea, /* form elements 表单元素 */
+th, td { /* table elements 表格元素 */
+    margin: 0;
+    padding: 0;
+}
+
+/* 设置默认字体 */
+body,
+button, input, select, textarea { /* for ie */
+    /*font: 12px/1 Tahoma, Helvetica, Arial, "宋体", sans-serif;*/
+    font: 12px/1 Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif; /* 用 ascii 字符表示，使得在任何编码下都无问题 */
+}
+
+h1 { font-size: 18px; /* 18px / 12px = 1.5 */ }
+h2 { font-size: 16px; }
+h3 { font-size: 14px; }
+h4, h5, h6 { font-size: 100%; }
+
+address, cite, dfn, em, var { font-style: normal; } /* 将斜体扶正 */
+code, kbd, pre, samp, tt { font-family: "Courier New", Courier, monospace; } /* 统一等宽字体 */
+small { font-size: 12px; } /* 小于 12px 的中文很难阅读，让 small 正常化 *//* 重置列表元素 */
+ul, ol { list-style: none; }/* 重置文本格式元素 */
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+abbr[title], acronym[title] { /* 注：1.ie6 不支持 abbr; 2.这里用了属性选择符，ie6 下无效果 */border-bottom: 1px dotted;cursor: help;}
+q:before, q:after { content: ''; }/* 重置表单元素 */
+legend { color: #000; } /* for ie6 */
+fieldset, img { border: none; } /* img 搭车：让链接里的 img 无边框 *//* 注：optgroup 无法扶正 */
+button, input, select, textarea {    font-size: 100%; /* 使得表单元素在 ie 下能继承字体大小 */}/* 重置表格元素 */
+table {border-collapse: collapse;border-spacing: 0;}/* 重置 hr */
+hr {    border: none;    height: 1px;}
+
+body{
+	max-width: 750px;
+	margin: 0 auto;
+	background: #F1F1F1;
+}
+
+.font{
+	font-size: 1.3rem;
+}
+.left{
+	float: left;
+}
+.right{
+	float: right;
+}
+
+.header{
+	height: 11.4rem;
+	width: 100%;
+	background-image: url(../images/bg.png);
+    width: 100%;
+    overflow: hidden;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    -webkit-filter: blur(0px);
+	    filter: blur(0px);
+}
+.user-info{
+	width: 14rem;
+	height: 8rem;
+	margin: 0 auto;
+	text-align: center;
+	padding-top: .2rem;
+	font-size: 1rem;
+	color: #fff;
+}
+.user-info p{
+	margin-top: 0.4rem;
+}
+.user-img img{
+	height: 4rem;
+	width: 4rem;
+	border-radius: 40px;
+	border: 2px solid #fff;
+}
+.show{
+	height: 1.2rem;
+	width: 13rem;
+	margin: 0 auto;
+	text-align: center;
+	font-size: 1rem;
+	color: #fff;
+}
+.head-not{
+	height: 2rem;
+	width: 18rem;
+	margin: 0 auto;
+	color: #fff;
+	font-size: 1rem;
+}
+.cont{
+	height: 7.5rem;
+	background-color: #fff;
+	width: 100%;
+	font-size: 1rem;
+}
+.cont-info{
+	height: 6rem;
+	width: 65%;
+	margin-top: .5rem;
+	color: #808080;
+}
+.cont-pay{
+	height: 6rem;
+	width: 34%;
+	border-left: 1px solid #D3D3D3;
+	margin-top: .5rem;
+}
+.cont-jine{
+	padding-left: 1.5rem;
+	padding-bottom: .3rem;
+	line-height: 1.5rem;
+	border-bottom: 1px solid #D3D3D3;
+	
+}
+.cont-yj{
+	padding-left: 1.5rem;
+	padding-top: .3rem;
+	line-height: 1.5rem;
+}
+.cont-cz {
+	height: 2.8rem;
+	width: 6.2rem;
+	margin: 0 auto;
+}
+.cont-tx{
+	height: 2.8rem;
+	width: 6.2rem;
+	margin: 0 auto;
+	padding-top: 0.8rem;
+}
+.czbtn{
+	height: 2.8rem;
+	width: 6rem;
+	padding: 0;
+}
+
+.game_list{
+	margin-top: .4rem;
+	height: 18rem;
+	width: 100%;
+	background-color: #fff;
+}
+
+
+.nav {
+width: 100%;
+height: 3.6rem;
+position: fixed;
+bottom: 0;
+background-color:#fff;
+left: 0;
+border-top: 1px solid #D3D3D3;
+}
+.nav span {
+display: inline-block;
+width: 23.8%;
+color: #808080;
+text-align: center;
+font-size: .8rem;
+line-height:30px;
+font-weight: 600;
+}
+.nav i{
+display: block;
+margin-top: 0.5rem;
+font-size: 1.2rem;
+}
+.qhb{
+	position: absolute;
+	top: 8%;
+	right: 2%;
+}
+.qhb img{
+	height: 5.5rem;
+}
+@media screen and (max-width:350px){
+ .cont-yj {
+   font-size: 0.8rem;
+  }
+  .game_list{
+	  height: 20rem;
+  }
+  .nav span {
+	  width: 32.2%;
+  }
+}

@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>支付中心</title>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" type="text/css" href="/static/aui/css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="/static/aui/css/aui-slide.css" />
+    <link rel="stylesheet" href="/static/aui/css/style.css">
+    <script src="/static/aui/res/iconfont.js"></script>
+</head>
+<body style="background-color: #f5f5f5">
+
+    <header class="aui-bar aui-bar-nav">
+        <a class="aui-pull-left aui-btn"  href="{:url("Index/index")}">
+            <span class="aui-iconfont aui-icon-left"></span>返回
+        </a>
+        <div class="aui-title">余额充值</div>
+    </header>
+    <section class="aui-content" id="user-info" style="color:#fff">
+        <div style="background-color: #00BFFF" class="aui-list aui-media-list aui-list-noborder" >
+            <div class="aui-list-item aui-list-item-middle">
+                <div class="aui-media-list-item-inner ">
+                    <div class="aui-list-item-media" style="width:3rem;">
+                        <img src="{$user.avatar}" class="aui-img-round" >
+                    </div>
+                    <div class="aui-list-item-inner aui-list-item-arrow" >
+                        <div class="aui-list-item-text text-white aui-font-size-18"  style="color:#fff">{$user.user_nickname}</div>
+                        <div class="aui-list-item-text text-white"  style="color:#fff">
+                           <div><i class="aui-iconfont aui-icon-my aui-font-size-14"> ID: </i> {$user.id}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="pay_cont">
+        <h3 style="margin-top:.3rem;">余额充值</h3>
+        <div class="pay_set">
+            <div class="on pay_this">3</div>
+            <div class="pay_this">30</div>
+            <div class="pay_this">5</div>
+            <div class="pay_this">50</div>
+          	<div class="pay_this">8</div>
+          	<div class="pay_this">80</div>
+        </div>
+    </div>
+    <div class="wechat_pay">
+        <i class="aui-iconfont aui-icon-wechat icons"></i> &nbsp;
+        <span style="position: relative;top: -5px;">微信支付</span> 
+        <div class="right"><i style="font-size:25px;font-weight: 900;" class="aui-iconfont aui-icon-correct"></i>
+        </div>
+    </div>
+    <div class="pay_btn">
+        <p><div class="aui-btn aui-btn-info aui-btn-block paypost">确认支付<span id="jine">3</span>元</div></p>
+    </div>
+    <!--设计底部-->
+    <div class="footer">
+            <a href="{:url("Index/index")}">
+            <div>
+                <p>
+                    <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                        <use xlink:href="#icon-shouye"></use>
+                    </svg>
+                </p>
+                首页
+            </div>
+            </a>
+            <a href="{:url("Index/daili")}">
+            <div>
+                <p>
+                    <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                        <use xlink:href="#icon-zichan"></use>
+                    </svg>
+                </p>
+                推广
+            </div>
+            </a>
+            <a href="{:url("Index/paycode")}">
+            <div>
+                <p>
+                    <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                        <use xlink:href="#icon-chuangjianqianbao"></use>
+                    </svg>
+                </p>
+                充值
+            </div>
+            </a>
+            <a href="{:url("Index/user")}">
+            <div>
+                    <p>
+                        <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                            <use xlink:href="#icon-wode"></use>
+                        </svg>
+                    </p>
+                    我的
+            </div>
+            </a>
+        </div>
+        <div style="display:none">
+            <form id="pays" name="myform" action="{:url("pay/index")}" method="post">
+                   <input id="moneys" type="text" name="money" value="3" />
+                   <input name="name" type="text" id="name" value="{$user.id}" />
+           </form>
+        </div>
+</body>
+<script type="text/javascript" src="/static/aui/script/api.js"></script>
+<script type="text/javascript" src="/static/aui/script/aui-slide.js"></script>
+<script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+<script>
+$(".pay_this").click(function(){
+    $(this).addClass('on').siblings('div').removeClass('on');
+    $('#jine').text($(this).text());
+    var jine=$(this).text();
+    $("#moneys").val(jine);
+});
+$(".paypost").click(function(){
+    $("#pays").submit(); 
+});
+</script>
+</html>

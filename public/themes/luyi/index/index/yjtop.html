@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>名人排行榜</title>
+        <link href="/static/yjtop/css/style.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" type="text/css" href="/static/aui/css/aui.css" />
+      	<link rel="stylesheet" href="/static/aui/css/style.css">
+    	<script src="/static/aui/res/iconfont.js"></script>
+      <style>
+      
+      	.new_ph{
+        	width:100%;
+        	height:2.4rem;
+          	padding:5px 5px 0px 5px;
+          	margin-bottom: 10px;
+        }
+        .new_ph div{
+        	text-align: center;
+          	width:49%;
+            line-height: 2.4rem;
+          	border:1px solid #f16925;
+          	color:#f16925;
+          	border-radius: 5px;
+          	font-size:18px;
+        }
+        .new_ph>.on{
+        	background-color: #f16925;
+    		color: #fff;
+        }
+      </style>
+    </head>
+    <body>
+
+        
+        <div class="ques-section-item">
+            <div class="ques-section-card">
+                <div class="ques-card-head ques-card-bul">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="30px" xml:space="preserve">
+                        <defs>
+                            <pattern id="water" width=".25" height="1.1" patternContentUnits="objectBoundingBox">
+                                <path fill="#fff" d="M0.25,1H0c0,0,0-0.659,0-0.916c0.083-0.303,0.158,0.334,0.25,0C0.25,0.327,0.25,1,0.25,1z"></path>
+                            </pattern>
+                            <g id="eff">
+                                <rect fill="url(#water)" x="-119.461" y="0" width="1200" height="120" opacity="0.3">
+                                    <animate attributeType="xml" attributeName="x" from="-300" to="0" repeatCount="indefinite" dur="10s"></animate>
+                                </rect>
+                                <rect fill="url(#water)" y="5" width="1600" height="125" opacity="0.3" x="-399.447">
+                                    <animate attributeType="xml" attributeName="x" from="-400" to="0" repeatCount="indefinite" dur="13s"></animate>
+                                </rect>
+                            </g>
+                        </defs>
+                        <use xlink:href="#eff" opacity="1" style="mix-blend-mode:normal;"></use>
+                    </svg>
+                </div>
+                <div class="ques-card-title ques-card-title-top">名人排行榜</div>
+             	 <div class="new_ph">
+                   <div class="left zjph on" >赚金排行</div>
+                   <div class="right yjph">佣金排行</div>
+              	</div>
+              	<ul class="ques-card-list zjtops" style="margin-bottom: 3rem;">
+                 <foreach name="zjtop" item="vo" key='num'>
+                    <li class="ques-card-list-noe">
+                        <div class="ques-list-box clearfix">
+                            <div class="ques-list-head">
+                                <div class="ques-list-image">
+                                    <img src="{$vo.user.avatar}" alt="">
+                                </div>
+                            </div>
+                            <div class="ques-list-name">
+                                <div class="ques-list-name-head">{$vo.user.user_login}</div>
+                                <div class="ques-list-name-text"> 今日赚金: {$vo.money}</div>
+                            </div>
+                            <span class="ques-list-name-icon item-icon00{$num+1}">{$num+1}</span>
+                        </div>
+                    </li>
+                    </foreach>
+                </ul>
+                <ul class="ques-card-list yjtops" style="margin-bottom: 3rem;display: none;">
+                 <foreach name="top" item="vo" key='num'>
+                    <li class="ques-card-list-noe">
+                        <div class="ques-list-box clearfix">
+                            <div class="ques-list-head">
+                                <div class="ques-list-image">
+                                    <img src="{$vo.user.avatar}" alt="">
+                                </div>
+                            </div>
+                            <div class="ques-list-name">
+                                <div class="ques-list-name-head">{$vo.user.user_login}</div>
+                                <div class="ques-list-name-text"> 今日佣金: {$vo.money}</div>
+                            </div>
+                            <span class="ques-list-name-icon item-icon00{$num+1}">{$num+1}</span>
+                        </div>
+                    </li>
+                    </foreach>
+                </ul>
+            </div>
+        </div>
+
+            <!--设计底部-->
+    <div class="footer" style="z-index:10">
+            <a href="{:url("Index/index")}">
+            <div>
+                <p>
+                    <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                        <use xlink:href="#icon-shouye"></use>
+                    </svg>
+                </p>
+                首页
+            </div>
+            </a>
+            <a href="{:url("Index/daili")}">
+            <div>
+                <p>
+                    <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                        <use xlink:href="#icon-zichan"></use>
+                    </svg>
+                </p>
+                推广
+            </div>
+            </a>
+            <a href="{:url("Index/paycode")}">
+            <div>
+                <p>
+                    <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                        <use xlink:href="#icon-chuangjianqianbao"></use>
+                    </svg>
+                </p>
+                充值
+            </div>
+            </a>
+            <a href="{:url("Index/user")}">
+            <div>
+                    <p>
+                        <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                            <use xlink:href="#icon-wode"></use>
+                        </svg>
+                    </p>
+                    我的
+            </div>
+            </a>
+        </div>
+<script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+<script>
+        $(".zjph").click(function(){
+            $(".yjtops").hide();
+            $(".zjtops").show();
+            $(".yjph").removeClass("on");
+            $(".zjph").addClass("on");
+        });
+        $(".yjph").click(function(){
+            $(".zjtops").hide();
+            $(".yjtops").show();
+            $(".zjph").removeClass("on");
+            $(".yjph").addClass("on");
+        });
+</script>
+    </body>
+</html>

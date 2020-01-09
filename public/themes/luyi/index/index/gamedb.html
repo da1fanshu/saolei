@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
+        <title>正品游戏demo</title>
+        <!-- 引入 FrozenUI -->
+        <link rel="stylesheet" href="/static/19game/src/css/frozenui.css"/>
+        <link rel="stylesheet" href="/static/19game/src/css/new.css"/>
+        <script src="/static/19game/src/res/iconfont.js"></script>
+        <script src="https://cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+        <script src="/static/19game/src/res/layer.js"></script>
+      
+      	<link rel="stylesheet" type="text/css" href="/static/sides/dist/swipeslider.css">
+      	<style>
+          .openlist{
+          	height:1.4rem;
+            width:100%;
+          }
+          .db_head{
+          	height:.5rem;
+            width:92%;
+           	padding-top: .2rem;
+            margin:0 auto;
+          }
+          .db_head>.on{
+          	    background-color: #f16925;
+    			color: #fff;
+          }
+          .dbnum{
+          float: left;
+          width: 23%;
+          height: .34rem;
+          line-height: .36rem;
+          text-align: center;
+          border: 1px solid #f16925;
+          margin-left: 1.2%;
+          border-radius: 5px;
+          color: #f16925;
+          }
+          .db_info{
+          	  height: .42rem;
+              width: 92%;
+              margin: 0 auto;
+          }
+          .db_type{
+          	width: 33%;
+            height: .34rem;
+            text-align: center;
+            float: left;
+            line-height: .34rem;
+          }
+          .db_btn{
+          	width:90%;
+            height:100%;
+           	 border: 1px solid #f16925;
+            color:#f16925;
+            font-size: 25px;
+    		line-height: .2rem;
+            border-radius: 5px;
+          }
+      </style>
+    </head>
+    <body>
+        <!-- 使用 -->
+        <div class="header">
+            <div class="left user_info">
+                <div style="display: inline-block;">
+                        <img src="{$user.avatar}" alt="imgtouxiang">
+                </div>
+                <span class="username">{$user.user_login}</span>
+            </div> 
+            <div class="right hbuser">
+                    <svg class="icon svg-icon jbicon" aria-hidden="true">
+                            <use xlink:href="#icon--jinbi"></use>
+                      </svg>
+                      <span id="gp_money">
+                        {$user.balance+$user.coin}&nbsp;
+                      </span>
+                      <span>
+                            UID:{$user.id}
+                      </span>
+            </div>
+        </div>
+        <div class="game_box" style="height: 1.4rem;">
+            <div class="game_img">
+                  <figure id="full_feature" class="swipslider">
+		        <ul class="sw-slides">
+		         <li class="sw-slide">
+		            <img src="/static/19game/src/images/banner1.png" alt="Summer beach concept">
+		          </li>
+		          <li class="sw-slide">
+		            <img src="/static/19game/src/images/banner2.png" alt="Lang from Yie Ar Kung Fu">
+		          </li>       
+		        </ul>
+		      </figure>
+            </div>
+        </div>
+        <div class="new_opentitle">
+            <svg class="icon svg-icon titleicon" aria-hidden="true">
+                <use xlink:href="#icon-youxiji"></use>
+            </svg>
+            &nbsp;尾号夺宝
+           <a href="{:url("Index/move")}"><span class="right" style="margin-right:.1rem;line-height:.38rem;">查看全部</span></a>
+        </div>
+        <div class="openlist">
+            <div class="db_head">
+              <div class="dbnum">大</div>
+              <div class="dbnum">小</div>
+              <div class="dbnum">单</div>
+              <div class="dbnum">双</div>
+            </div>
+            <div class="db_info">
+              <div class="db_type">
+                    <button class="db_btn jian">-</button>
+              </div>
+               <div class="db_type">
+                 竞猜: <span id="dbshou">1</span> 手
+              </div>
+              <div class="db_type">
+                 <button class="db_btn jia">+</button>
+              </div>
+            </div>
+         	<span style="margin-left:.1rem;font-size:14px;">竞猜金额：<span style="color: #ffc107" class="jcjine">2</span></span><span style="margin-right:.1rem;font-size:14px;" class="right">预计收益：<span class="yjsy" style="color: #ffc107">4</span></span>
+        </div>
+        <div class="new_opentitle" style="margin-top:10px;margin-left:-10px;margin-bottom:.8rem;">
+
+            <iframe id="userxzlist" style="width:100%;border: 0;" frameborder="0" onload="this.height=this.contentWindow.document.body.scrollHeight"  src="{:url("Index/userxzlist")}"></iframe>
+
+        </div>
+        <div class="copy">
+                <p>Copyright © 2018-2019 沪ICP备10011451号-26</p>
+         </div>
+         <div class="new_gamepay">
+            <div class="left new_gouinfo">根据官方在线人数作为依据</div>
+            <div class="right new_goumai"  id="ClickMe">开始夺宝</div>
+         </div>
+
+
+    <!--显示-->
+    <div id="goodcover" style="display: none;"></div>
+    <div id="code" style="position: fixed; bottom: 0px; display: none;">
+
+            <div class="tabs tabs2" >
+                <li>
+                    <a name=".tab4" class="current">大小单双</a>
+                </li>
+                <li>
+                    <a name=".tab5" class="">龙虎争霸</a>
+                </li>
+                <li>
+                    <a name=".tab6">单人夺牛</a>
+                </li>
+            </div>
+        
+            <div class="content md-content">
+        
+                <!--双人夺宝-->
+                <div class="tab4" style="display: block;">
+                    <h1 id="two_type">
+                        <span><i data="s0_1.9" class="ifocus">大数</i></span>
+                        <span><i data="s1_1.9">小数</i></span>
+                        <span style="margin-left:8%;"><i data="s2_1.9">单数</i></span>
+                        <span><i data="s3_1.9">双数</i></span>
+                    </h1>
+                    <center>
+                        <p>选择购买数量</p>
+                        <h4 id="two_num">
+                            <span><i>5</i></span>
+                            <span><i>10</i></span>
+                            <span><i>30</i></span>
+                            <span><i>50</i></span>
+                            <span><i>100</i></span>
+                        </h4>
+        
+                        <h5>
+                            <span onclick="remove_num(&quot;two&quot;);"><i>-</i></span>
+                            <span class="input"><input type="text" id="two_input_num" readonly="true" value="1" class="text"></span>
+                            <span onclick="add_num(&quot;two&quot;);"><i>+</i></span>
+                        </h5>
+                    </center>
+                    <p class="mon">
+                            <span class="fl">
+                                本次下注收益：<span>￥</span><span id="two_pay_money" class="c1">1.9</span>
+                                <br>我的账号余额：<span>￥</span><span class="c1 span_account_now">0</span>
+                            </span>
+                        <span class="fr sm1">玩法说明</span>
+                    </p>
+        
+                    <p class="mons">
+                        <span>你将购买第</span>
+                        <span class="c1">20190228052</span>
+                        <span>期，剩余时间</span>
+                        <span class="fnTimeCountDown c1" data-end="2019/02/28 14:40:00"><span class="times">60</span>秒</span>
+                    </p>
+        
+                    <h6>
+                        <input type="button" name="button" id="two_button" value="开始夺宝" onclick="sell_now(&quot;two&quot;);">
+                    </h6>
+                </div>
+        
+                <!--四人夺宝-->
+                <div class="tab5" style="display: none;">
+                    <h2 id="four_type">
+                        <span><i data="l0_1.9" class="ifocus">龙</i></span>
+                        <span><i data="l1_1.9">虎</i></span>
+                        <span><i data="l2_8">合</i></span>
+                    </h2>
+                    <center>
+                        <p>选择购买数量</p>
+                        <h4 id="four_num">
+                            <span><i>5</i></span>
+                            <span><i>10</i></span>
+                            <span><i>30</i></span>
+                            <span><i>50</i></span>
+                            <span><i>100</i></span>
+                        </h4>
+                        <h5>
+                            <span onclick="remove_num(&quot;four&quot;);"><i>-</i></span>
+                            <span class="input"><input type="text" id="four_input_num" value="1" readonly="true" class="text"></span>
+                            <span onclick="add_num(&quot;four&quot;);"><i>+</i></span>
+                        </h5>
+                    </center>
+        
+                    <p class="mon">
+                            <span class="fl">
+                                    本次下注收益：<span>￥</span><span id="four_pay_money" class="c1">14</span>
+                                <br>我的账号余额：<span>￥</span><span class="c1 span_account_now">0</span>
+                            </span>
+                        <span class="fr sm1">玩法说明</span>
+                    </p>
+        
+                    <p class="mons">
+                        <span>你将购买第</span>
+                        <span class="c1">20190228052</span>
+                        <span>期，剩余时间</span>
+                        <span class="fnTimeCountDown c1" data-end="2019/02/28 14:40:00"><span class="times">60</span>秒</span>
+                    </p>
+        
+                    <h6><input type="button" name="button" id="four_button" value="开始夺宝" onclick="sell_now(&quot;four&quot;);"></h6>
+        
+        
+                </div>
+        
+                <!--十人夺宝-->
+                <div class="tab6" style="display: none;">
+                    <h3 id="ten_type">
+                        <span><i data="n1_6.6" class="ifocus" val="10">牛1<p class="jiaobiao">6.6倍</p></i></span>
+                        <span><i  style="overflow:hidden;" data="n2_4.5" val="11"> 牛2
+                            <p class="jiaobiao">4.5倍</p>
+                        </i></span>
+                        <span><i data="n3_3" val="12">牛3<p class="jiaobiao">3.0倍</p></i></span>
+                        <span><i data="n4_2.3" val="13">牛4<p class="jiaobiao">2.3倍</p></i></span>
+                        <span><i data="n5_1.9" val="14">牛5<p class="jiaobiao">1.9倍</p></i></span>
+                        <span><i data="n6_1.5" val="15">牛6<p class="jiaobiao">1.5倍</p></i></span>
+                        <span><i data="n7_1.3" val="16">牛7<p class="jiaobiao">1.3倍</p></i></span>
+                        <span><i data="n8_1.1" val="17">牛8<p class="jiaobiao">1.1倍</p></i></span>
+
+                    </h3>
+                    <center>
+                        <p>选择购买数量</p>
+                        <h4 id="ten_num">
+                            <span><i>5</i></span>
+                            <span><i>10</i></span>
+                            <span><i>30</i></span>
+                            <span><i>50</i></span>
+                            <span><i>100</i></span>
+                        </h4>
+                        <h5>
+                            <span onclick="remove_num(&quot;ten&quot;);"><i>-</i></span>
+                            <span class="input"><input type="text" id="ten_input_num" value="1" readonly="true" class="text"></span>
+                            <span onclick="add_num(&quot;ten&quot;);"><i>+</i></span>
+                        </h5>
+                    </center>
+                    <p class="mon">
+                            <span class="fl">
+                                    本次下注收益：<span>￥</span><span id="ten_pay_money" class="c1">6</span>
+                                <br>我的账号余额：<span>￥</span><span class="c1 span_account_now">0</span>
+                            </span>
+                        <span class="fr sm1">玩法说明</span>
+                    </p>
+        
+                    <p class="mons">
+                        <span>你将购买第</span>
+                        <span class="c1">20190228052</span>
+                        <span>期，剩余时间</span>
+                        <span class="fnTimeCountDown c1" data-end="2019/02/28 14:40:00"><span class="times">60</span>秒</span>
+                    </p>
+                    <h6><input type="button" name="button" id="ten_button" value="开始夺宝" onclick="sell_now(&quot;ten&quot;);"></h6>
+                </div>
+            </div>
+        </div>
+    <!--显示-->
+    <!--footer-->
+    <div class="footer">
+            <a href="{:url("Index/index")}">
+            <div>
+                <p>
+                    <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                        <use xlink:href="#icon-shouye"></use>
+                    </svg>
+                </p>
+                首页
+            </div>
+            </a>
+            <a href="{:url("Index/daili")}">
+            <div>
+                <p>
+                    <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                        <use xlink:href="#icon-zichan"></use>
+                    </svg>
+                </p>
+                推广
+            </div>
+            </a>
+            <a href="{:url("Index/paycode")}">
+            <div>
+                <p>
+                    <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                        <use xlink:href="#icon-chuangjianqianbao"></use>
+                    </svg>
+                </p>
+                充值
+            </div>
+            </a>
+            <a href="{:url("Index/user")}">
+            <div>
+                    <p>
+                        <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                            <use xlink:href="#icon-wode"></use>
+                        </svg>
+                    </p>
+                    我的
+            </div>
+            </a>
+        </div>
+        <!--弹窗-->
+        <div class="ui-dialog endsgames" style="z-index:999">
+                <div class="ui-dialog-cnt" style="border-top: 4px solid #f16925;">
+                    <div class="ui-dialog-bd">
+                        <h3>本期已经停止啦！    </h3>
+                    </div>
+                    <div class="ui-dialog-ft">
+                        <button type="button" data-role="button" class="endtc">了解了</button>
+                    </div>
+                </div>
+        </div>
+        <div class="ui-dialog ui-dialog-operate game_sm" style="z-index:999;">
+                <div class="ui-dialog-cnt" style="width:95%;">
+                    <div class="ui-dialog-hd">
+                        <div class="ui-img" style="height:4.6rem;width:100%">
+                            <span style="background-image:url(/static/19game/src/images/sm.png)"></span>
+                        </div>
+                    </div>
+
+                      <i class="ui-dialog-close newclose" data-role="button" ></i>
+                </div>
+              </div>
+        <script>
+          usermoney={$user.balance+$user.coin};
+        </script>
+        <script src="/static/19game/src/res/popup.js"></script>
+      	<script src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+      	<script>
+        wx.ready(function () {
+            wx.hideAllNonBaseMenuItem();
+        });
+      </script>
+    <script type="text/javascript" src="/static/sides/dist/swipeslider.min.js"></script>
+    <script src="/static/19game/js/gameopen.js"></script>
+	<script type="text/javascript">
+		$(window).load(function() {
+		      $('#full_feature').swipeslider({
+               sliderHeight: '1.42rem'
+              });
+		      $('#content_slider').swipeslider({
+		        transitionDuration: 600,
+		        autoPlayTimeout: 10000,
+		        sliderHeight: '300px'
+		      });
+		 });
+	</script>
+    </body>
+</html>

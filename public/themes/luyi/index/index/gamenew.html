@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
+        <title>斗豹子</title>
+        <!-- 引入 FrozenUI -->
+        <link rel="stylesheet" href="/static/19game/src/css/frozenui.css"/>
+        <link rel="stylesheet" href="/static/19game/src/css/new.css"/>
+        <link rel="stylesheet" href="/static/19game/css/index.css">
+        <script src="/static/19game/src/res/iconfont.js"></script>
+        <script src="https://cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+        <script src="/static/19game/src/res/layer.js"></script>
+</head>
+<body>
+            <!-- 使用 -->
+            <div class="header">
+                <div class="left user_info">
+                    <div style="display: inline-block;">
+                            <img src="{$user.avatar}" alt="{$user.user_nickname}">
+                    </div>
+                    <span class="username">{$user.user_nickname}</span>
+                </div> 
+                <div class="right hbuser">
+                        <svg class="icon svg-icon jbicon" aria-hidden="true">
+                                <use xlink:href="#icon--jinbi"></use>
+                          </svg>
+                          <span id="moneys">
+                            {$user.balance+$user.coin}&nbsp;
+                          </span>
+                          <span>
+                                UID:{$user.id}
+                          </span>
+                </div>
+            </div>
+            <!--内容-->
+            <div class="game_head">
+                <div class="new_28kj">
+                    <div> <a href="{:url("Index/newlisi")}">历史记录</a> </div>
+                    <div style="float:right"> <a class="showgamesm">游戏说明</a> </div>
+                </div>
+                <div class="left zj_info">
+                    <div class="xzq" id="zj1">
+                        <p style="margin-top: .4rem;">天门</p>
+                        <p>Tianmen</p>
+                    </div>
+                </div>
+              	<div class="left new_zj">
+                  	<div style="height:.45rem;text-align: center;line-height: .65rem;color: #f16925;">
+                      	<div id="kjsjhide">请下注: <span id="time">{$kjtime}</span> 秒 </div>
+                  		<div id="kjsjshow" style="display:none">开奖中...</div>
+                  	</div>
+                    <div class="xzq" id="zj1" style="height:1.35rem;background: #D3D3D3;color:#BEBEBE">
+                        <p style="margin-top: .3rem;font-size: 22px;">庄家</p>
+                        <p>Banker</p>
+                    </div>
+                </div>
+                <div class="right xj_info">
+                    <div class="xzq"  id="xj1">
+                        <p style="margin-top: .4rem;">地门</p>
+                        <p>Dimen</p>
+                    </div>
+                </div>
+            </div>
+        <div class="lslist">
+            <div class="new_opentitle">
+                <svg class="icon svg-icon titleicon" aria-hidden="true">
+                    <use xlink:href="#icon-huabanfuben"></use>
+                </svg>
+                &nbsp;最新历史
+            </div>
+          	<style>
+              .kjimg img{
+              	height:.28rem;
+                position: relative;
+    			top: .08rem;
+              }
+          	</style>
+            <div class="openlist">
+                <ul class="kjimg">
+                        <li class="new_openli">第{$openlist.0.term}期(天<img src="/static/19game/images/pai/{$kjnum.0}{$kjnum.1}.png"><img src="/static/19game/images/pai/{$kjnum.2}{$kjnum.3}.png">/庄<img src="/static/19game/images/pai/{$kjnumd.0}{$kjnumd.1}.png"><img src="/static/19game/images/pai/{$kjnumd.2}{$kjnumd.3}.png">/地<img src="/static/19game/images/pai/{$kjnumt.0}{$kjnumt.1}.png"><img src="/static/19game/images/pai/{$kjnumt.2}{$kjnumt.3}.png">)</li>
+                        <li class="new_openli">第{$openlist.1.term}期(天<img src="/static/19game/images/pai/{$kjnum1.0}{$kjnum1.1}.png"><img src="/static/19game/images/pai/{$kjnum1.2}{$kjnum1.3}.png">/庄<img src="/static/19game/images/pai/{$kjnum1d.0}{$kjnum1d.1}.png"><img src="/static/19game/images/pai/{$kjnum1d.2}{$kjnum1d.3}.png">/地<img src="/static/19game/images/pai/{$kjnum1t.0}{$kjnum1t.1}.png"><img src="/static/19game/images/pai/{$kjnum1t.2}{$kjnum1t.3}.png">)</li>
+                        <li class="new_openli">第{$openlist.2.term}期(天<img src="/static/19game/images/pai/{$kjnum2.0}{$kjnum2.1}.png"><img src="/static/19game/images/pai/{$kjnum2.2}{$kjnum2.3}.png">/庄<img src="/static/19game/images/pai/{$kjnum2d.0}{$kjnum2d.1}.png"><img src="/static/19game/images/pai/{$kjnum2d.2}{$kjnum2d.3}.png">/地<img src="/static/19game/images/pai/{$kjnum2t.0}{$kjnum2t.1}.png"><img src="/static/19game/images/pai/{$kjnum2t.2}{$kjnum2t.3}.png">)</li>
+                </ul>
+            </div>
+            <div class="new_opentitle">
+                <svg class="icon svg-icon titleicon" aria-hidden="true">
+                    <use xlink:href="#icon-tubiaozhizuomoban"></use>
+                </svg>
+                &nbsp;我的记录
+            </div>
+          	 <div class="new_opentitle" style="margin-top:-4px;margin-left:-10px;margin-bottom:1rem;">
+
+            <iframe id="userxzlist" style="width:100%;border: 0;" frameborder="0" onload="this.height=this.contentWindow.document.body.scrollHeight"  src="{:url("Index/newuidlist")}"></iframe>
+
+        	</div>
+        </div>
+        <!--金额显示-->
+        <div class="bgmoney">
+            
+        </div>
+        <!--牌面-->
+        <div class="pai_show">
+            <img id="pai1" src="/static/19game/images/pai/pai_b0.png" style="z-index: 1;position: absolute;width: 14%;left: 50%;top: -15%;">
+            <img id="pai2" src="/static/19game/images/pai/pai_b0.png" style="z-index: 1;position: absolute;width: 14%;left: 50%;top: -15%;">
+			<div id="zjsf" class="kj_shengfu" style="color:#fff">
+				庄6点败 
+			</div>
+			<div id="xjsf" class="kj_shengfu1" style="color:#fff">
+				闲8点胜 
+			</div>
+			<!--闲-->
+            <img id="pai3" src="/static/19game/images/pai/pai_b0.png" style="z-index: 1;position: absolute;width: 14%;right: 50%;top: -15%;">
+            <img id="pai4" src="/static/19game/images/pai/pai_b0.png" style="z-index: 1;position: absolute;width: 14%;right: 50%;top: -15%;">
+          	<!--庄-->
+          	<div id="nzjsf" class="kj_shengfu2" style="color:#fff">
+				庄8点胜 
+			</div>
+			
+            <img id="pai5" src="/static/19game/images/pai/pai_b0.png" style="z-index: 1;position: absolute;width: 12%;right: 50%;top: -15%;">
+            <img id="pai6" src="/static/19game/images/pai/pai_b0.png" style="z-index: 1;position: absolute;width: 12%;right: 50%;top: -15%;">
+        </div>
+        
+        <div class="tzmoney">
+            <div class="tzjine on" data="2"></div>
+            <div class="tzjine" data="10"></div>
+            <div class="tzjine" data="20"></div>
+            <div class="tzjine" data="50"></div>
+            <div class="tzjine" data="100"></div>
+            <div class="tzjine" data="200"></div>
+        </div>
+    <!--footer-->
+    <div class="footer">
+        <a href="{:url("Index/index")}">
+        <div>
+            <p>
+                <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                    <use xlink:href="#icon-shouye"></use>
+                </svg>
+            </p>
+            首页
+        </div>
+        </a>
+        <a href="{:url("Index/daili")}">
+        <div>
+            <p>
+                <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                    <use xlink:href="#icon-zichan"></use>
+                </svg>
+            </p>
+            推广
+        </div>
+        </a>
+        <a href="{:url("Index/paycode")}">
+        <div>
+            <p>
+                <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                    <use xlink:href="#icon-chuangjianqianbao"></use>
+                </svg>
+            </p>
+            充值
+        </div>
+        </a>
+        <a href="{:url("Index/user")}">
+        <div>
+                <p>
+                    <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                        <use xlink:href="#icon-wode"></use>
+                    </svg>
+                </p>
+                我的
+        </div>
+        </a>
+    </div>
+<div class="ui-dialog ui-dialog-operate gamesm">
+  <div class="ui-dialog-cnt">
+  	<div class="ui-dialog-hd">
+  		<div class="ui-img" style="height: 3.2rem;">
+  			<span style="background-image:url(/static/19game/images/gamesm.png)"></span>
+  		</div>
+  	</div>
+	<i class="ui-dialog-close hidesm" data-role="button"></i>
+  </div>
+</div>
+<script>
+usermoney=$('#moneys').text();
+dqterm={$term};
+userid={$user.id};
+</script>
+<script src="/static/19game/js/index.js"></script>
+</body>
+</html>

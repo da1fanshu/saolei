@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
+        <title>正版游戏 Demo</title>
+        <!-- 引入 FrozenUI -->
+        <link rel="stylesheet" href="/static/19-5game/src/css/frozenui.css"/>
+        <link rel="stylesheet" href="/static/19-5game/src/css/new.css"/>
+        <link rel="stylesheet" href="/static/19-5game/css/style.css">
+        <script src="/static/19-5game/src/res/iconfont.js"></script>
+        <script src="https://cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+        <script src="/static/19-5game/src/res/layer.js"></script>
+    </head>
+    <body>
+        <!-- 使用 -->
+        <div class="header">
+            <div class="left user_info">
+                <div style="display: inline-block;">
+                        <img src="{$user.avatar}" alt="">
+                </div>
+                <span class="username">{$user.user_login}</span>
+            </div> 
+            <div class="right hbuser">
+                    <svg class="icon svg-icon jbicon" aria-hidden="true">
+                            <use xlink:href="#icon--jinbi"></use>
+                      </svg>
+                      <span>
+                        {$user.balance+$user.coin}&nbsp;
+                      </span>
+                      <span>
+                            UID:{$user.id}
+                      </span>
+            </div>
+        </div>
+        <div class="game_box">
+            <div class="game_img">
+                    <img src="/static/19game/src/images/banner1.png" alt="">
+            </div>
+            <div class="game_box_info">
+                <div class="left info_l">
+                    <h3 class="newffkj" style="font-size: 16px;">第{$open.0.term}期/
+                       <span>{$kjnum.2}+{$kjnum.3}+{$kjnum.4}={$newkjinfos}</span> 
+                    </h3>
+                    <p style="font-size:15px;margin-top: .04rem;color: #666">第{$kjterm}期/<span style="color:#f16925" class="font18">进行中</span> <a href="{:url("Index/move")}">历史</a></p>
+                </div>
+                <div class="right info_r">
+                    <button class="info_btn"><span id="time">{$open.kjtimes}</span>秒</button>
+                    <button class="info_btn newshow" style="display:none">开奖中</button>
+                </div>
+            </div>
+        </div>
+        <!--新的-->
+        <div class="newff_type">
+            <div class="ui-tab ">
+                <ul class="ui-tab-nav ui-border-b ">
+                    <li class="current newcdx"><span>猜大小</span></li>
+                    <li class="newcdm"><span>猜单码</span></li>
+                </ul>
+                <ul class="ui-tab-content" style="width:100%">
+                    <li class="newinfo1">
+                        <div class="newgameinfos">
+                            <span class="left">腾讯分分彩</span>
+                            <!--
+                                <span class="newyxtime left">游戏时间：00:00-24:00</span>
+                            -->
+                            <span class="right newshuoming sm1" >游戏说明</span>
+                        </div>
+                        <div class="newxiazhuxuanxiang" style="height:1.4rem">
+                            <div class="newdx_num on" data="d_2">
+                                 <p style="margin-top:.07rem">大</p>
+                                 <p>2倍</p>
+                            </div>
+                            <div class="newdx_num" data="h_4">
+                                    <p style="margin-top:.07rem" >合</p>
+                                    <p>3倍</p>
+                            </div>
+                            <div class="newdx_num"  data="x_2">
+                                    <p style="margin-top:.07rem">小</p>
+                                    <p>2倍</p>
+                            </div>
+                          	 <div class="newdx_num"  data="n_2" style="margin-top:.1rem;width:47%">
+                                    <p style="margin-top:.07rem">单</p>
+                                    <p>2倍</p>
+                            </div>
+                          	 <div class="newdx_num"  data="s_2" style="margin-top:.1rem;width:47%">
+                                    <p style="margin-top:.07rem">双</p>
+                                    <p>2倍</p>
+                            </div>
+                        </div>  
+                    </li>
+                    <li class="newinfo2" style="display: none">
+                            <div class="newgameinfos">
+                                    <span class="left">腾讯分分彩</span>
+                                    <!--
+                                        <span class="newyxtime left">游戏时间：00:00-24:00</span>
+                                    -->
+                                    <span class="right newshuoming sm2" >游戏说明</span>
+                                </div>
+                                <div class="newxiazhuxuanxiang">
+                                    <div class="newdm_num" rel="0" data="1">
+                                         <p style="margin-top:.07rem">1</p>
+                                      	 <p>2.5倍</p>
+                                    </div>
+                                    <div class="newdm_num" rel="0" data="2">
+                                            <p style="margin-top:.07rem">2</p>
+                                      <p>2.5倍</p>
+                                    </div>
+                                    <div class="newdm_num" rel="0" data="3">
+                                            <p style="margin-top:.07rem">3</p>
+                                      <p>2.5倍</p>
+                                    </div>
+                                    <div class="newdm_num" rel="0" data="4">
+                                            <p style="margin-top:.07rem">4</p>
+                                      <p>2.5倍</p>
+                                    </div>
+                                    <div class="newdm_num" rel="0" data="5">
+                                            <p style="margin-top:.07rem">5</p>
+                                      <p>2.5倍</p>
+                                    </div>
+                                    <div class="newdm_num " rel="0" data="6">
+                                            <p style="margin-top:.07rem">6</p>
+                                      <p>2.5倍</p>
+                                       </div>
+                                       <div class="newdm_num" rel="0" data="7">
+                                               <p style="margin-top:.07rem">7</p>
+                                         <p>2.5倍</p>
+                                       </div>
+                                       <div class="newdm_num" rel="0" data="8">
+                                               <p style="margin-top:.07rem">8</p>
+                                         <p>2.5倍</p>
+                                       </div>
+                                       <div class="newdm_num" rel="0" data="9">
+                                               <p style="margin-top:.07rem">9</p>
+                                         <p>2.5倍</p>
+                                       </div>
+                                       <div class="newdm_num" rel="0" data="0">
+                                               <p style="margin-top:.07rem">0</p>
+                                         <p>2.5倍</p>
+                                       </div>
+                                </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+       <div class="new_opentitle" style="margin-top:10px;margin-left:-10px;margin-bottom:.8rem;">
+
+            <iframe id="userxzlist" style="width:100%;border: 0;" frameborder="0" onload="this.height=this.contentWindow.document.body.scrollHeight"  src="{:url("Index/userxzlist")}"></iframe>
+
+        </div>
+        <div class="copy">
+                <p>Copyright © 2018-2019 沪ICP备10011451号-26</p>
+         </div>
+         <div class="new_gamepay">
+            <div class="left new_gouinfo">根据官方在线人数作为依据</div>
+            <div class="right new_goumai"  id="ClickMe">立即买入</div>
+         </div>
+
+
+    <!--显示-->
+    <div id="goodcover" style="display: none;"></div>
+    <div id="code" style="position: fixed; bottom: 0px; display: none;">
+        
+            <div class="content md-content">
+        
+                <!--双人夺宝-->
+                <div class="tab4" style="display: block;">
+                    <center>
+                        <p>选择购买数量</p>
+                        <h4 id="two_num">
+                            <span><i>5</i></span>
+                            <span><i>10</i></span>
+                            <span><i>30</i></span>
+                            <span><i>50</i></span>
+                            <span><i>100</i></span>
+                        </h4>
+        
+                        <h5>
+                            <span onclick="remove_num(&quot;two&quot;);"><i>-</i></span>
+                            <span class="input"><input type="text" id="two_input_num" readonly="true" value="1" class="text"></span>
+                            <span onclick="add_num(&quot;two&quot;);"><i>+</i></span>
+                        </h5>
+                    </center>
+                    <p class="mon">
+                            <span class="fl">
+                              <!--  本次下注收益：<span>￥</span><span id="two_pay_money" class="c1">1.9</span> -->
+                                <br>我的账号余额：<span>￥</span><span class="c1 span_account_now">{$user.balance+$user.coin}</span>
+                            </span>
+                        <span class="fr sm1">玩法说明</span>
+                    </p>
+        
+                    <p class="mons">
+                        <span>你将购买第</span>
+                        <span class="c1">20190228052</span>
+                        <span>期，剩余时间</span>
+                        <span class="fnTimeCountDown c1" data-end="2019/02/28 14:40:00"><span class="times">60</span>秒</span>
+                    </p>
+        
+                    <h6>
+                        <input type="button" name="button" id="two_button" value="开始夺宝" onclick="sell_now(&quot;two&quot;);">
+                    </h6>
+                </div>
+
+            </div>
+        </div>
+    <!--显示-->
+    <!--footer-->
+    <div class="footer">
+            <a href="{:url("Index/index")}">
+            <div>
+                <p>
+                    <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                        <use xlink:href="#icon-shouye"></use>
+                    </svg>
+                </p>
+                首页
+            </div>
+            </a>
+            <a href="{:url("Index/daili")}">
+            <div>
+                <p>
+                    <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                        <use xlink:href="#icon-zichan"></use>
+                    </svg>
+                </p>
+                推广
+            </div>
+            </a>
+            <a href="{:url("Index/paycode")}">
+            <div>
+                <p>
+                    <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                        <use xlink:href="#icon-chuangjianqianbao"></use>
+                    </svg>
+                </p>
+                充值
+            </div>
+            </a>
+            <a href="{:url("Index/user")}">
+            <div>
+                    <p>
+                        <svg class="icon svg-icon iconfoot" aria-hidden="true">
+                            <use xlink:href="#icon-wode"></use>
+                        </svg>
+                    </p>
+                    我的
+            </div>
+            </a>
+        </div>
+        <!--弹窗-->
+        <div class="ui-dialog endsgames" style="z-index:999">
+                <div class="ui-dialog-cnt" style="border-top: 4px solid #f16925;">
+                    <div class="ui-dialog-bd">
+                        <h3>本期已经停止啦！    </h3>
+                    </div>
+                    <div class="ui-dialog-ft">
+                        <button type="button" data-role="button" class="endtc">了解了</button>
+                    </div>
+                </div>
+        </div>
+        <div class="ui-dialog ui-dialog-operate game_sm" style="z-index:999">
+                <div class="ui-dialog-cnt">
+                    <div class="ui-dialog-hd">
+                        <div class="ui-img" style="height:3rem">
+                            <span style="background-image:url(/static/19-5game/img/sm2.png)"></span>
+                        </div>
+                    </div>
+                    <div class="ui-dialog-ft">
+                          <button class="ui-btn-lg">立刻买入吧</button>
+                      </div>
+                      <i class="ui-dialog-close newclose" data-role="button" ></i>
+                </div>
+              </div>
+      <div class="ui-dialog ui-dialog-operate game_sm1" style="z-index:999">
+                <div class="ui-dialog-cnt">
+                    <div class="ui-dialog-hd">
+                        <div class="ui-img" style="height:3rem">
+                            <span style="background-image:url(/static/19-5game/img/sm1.png)"></span>
+                        </div>
+                    </div>
+                    <div class="ui-dialog-ft">
+                          <button class="ui-btn-lg">立刻买入吧</button>
+                      </div>
+                      <i class="ui-dialog-close newclose1" data-role="button" ></i>
+                </div>
+              </div>
+        <script>
+          dqterm={$open.0.term};
+          usermoney={$user.balance+$user.coin};
+          newpays={$newpay};
+        </script>
+        <script src="/static/19-5game/src/res/popup.js"></script>
+    </body>
+</html>

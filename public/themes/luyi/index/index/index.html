@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>{$conf.site_name}</title> 
+	<link rel="stylesheet" type="text/css" href="/static/hongbao/layui/css/layui.css">
+	<link rel="stylesheet" type="text/css" href="/static/hongbao/css/main.css?v=2">
+	<script src="/static/hongbao/js/jquery-1.8.3.js"></script>
+	  <style>
+	  .kaihb_font_a_a {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    border-radius: 50%
+    }
+
+		.top_font_a{
+			display: block;
+			width: 70px;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			margin-top: -17px;
+			margin-left: 32px;
+		}
+		.top_font_b{
+			display: block;
+			width: 70px;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			margin-top: -17px;
+			margin-left: 32px;
+		}
+		.kaihonbao .lqlist .lqname
+		{
+			display: block;
+			width: 100px;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+				margin-top: -27px;
+			margin-left: 32px;
+		}
+
+		.kaihb_font_a
+		{
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+	
+		}
+		.lqtime{
+			margin-left: 33px;
+		}
+	</style>
+</head>
+<body>
+	
+	<!--顶部-->
+	<div class="top">
+		<div class="layui-col-xs5">
+			<div class="top_tximg"><img class="layui-nav-img" src="{$user.avatar}"/></div>
+			<div class="top_user">
+				<!--<p>昵称：<span class="top_font_c"></span></p>-->
+				<p>账号：<span class="top_font_a"></span></p>
+				<p>金币：<span class="top_font_b"></span></p>
+			</div>
+		</div>
+		<script>
+			var imgtest = "{$user.avatar}";
+			
+			
+	
+		</script>
+		<div class="layui-col-xs7">
+			<div class="layui-col-xs4">
+				<div class="top_tx">提现</div>
+			</div>
+			<div class="layui-col-xs4">
+				<div class="top_cz">充值</div>
+			</div>
+			<div class="layui-col-xs4">
+				<div class="top_tg">推广</div>
+			</div>
+		</div>
+	</div>
+	<marquee class="sygg layui-anim layui-anim-fadein" style="color: #0000FF; font-weight:b2old;font-size:15px;"> </marquee>
+	<!--底部-->
+	<div class="bottom">
+		<!--底部_发红包区域-->
+		<div class="fahonbao" >
+			<div class="layui-col-xs1 foot_kefu">
+				<i class="layui-icon layui-icon-dialogue" style="color: #363636;" ></i>
+    		</div>
+    		<div class="layui-col-xs9">
+				<button class="fahb layui-btn layui-btn-sm layui-btn-fluid layui-btn-danger" style="background: #fff;"><i style="color: #000;font-style:normal;font-family:微软雅黑;font-weight:b2old;">按住 发送红包</i></button>
+    		</div>
+    		<div class="layui-col-xs1 foot_jqr">
+				<i class="layui-icon layui-icon-util" style="color: #363636;"></i>
+    		</div>
+    		<div class="layui-col-xs1 foot_jia">
+				<i class="layui-icon layui-icon-add-circle" style="color: #363636;"></i>
+    		</div>
+    		<div class="clear"></div>
+		</div>
+		<!--底部_展开区域-->
+		<div class="other_funct">
+			<ul class="list_funct">
+			<li class="layui-icon layui-icon-find-fill " style="color: #0000FF;"><a class="layui-icon layui-icon-find-fill " href="http://p.qiao.baidu.com/cps/chat?siteId=14109356&userId=27953785" > 
+			<p style="color: #0000FF;">客服~在线</p></a></li>
+			<li class="layui-icon layui-icon-login-qq " ><a class="layui-icon layui-icon-login-qq " href="http://wpa.qq.com/msgrd?v=3&uin=962287639"> <p>QQ-离线</p></a></li>
+			   <!--li class="layui-icon layui-icon-notice funnct_czkefu"><p>紧急备用②</p></li>-->
+				<li class="layui-icon " style="color: #EE4000; font-size:17px;" onclick="copyCut()" >{$user.user_login}<p >复制我的ID</p></li>
+				<li class="layui-icon layui-icon-read funct_jieshao"><p>玩法介绍</p></li>
+			    <li class="layui-icon layui-icon-log funct_mingxi"><p>记录明细</p></li>
+				<li class="layui-icon layui-icon-chart funct_xiaji"><p>推广管理</p></li>
+				<li class="layui-icon layui-icon-code-circle funct_zhuanzhang"><p>金币互转</p></li>
+				<!--li class="layui-icon layui-icon-login-wechat funct_dailiqun"><p>代理交流群</p></li>-->
+				<li class="layui-icon layui-icon-rmb funct_yjfuli"><p>佣金福利</p></li>
+				<!--
+				<li class="layui-icon layui-icon-rmb funct_gongzia"><p>50佣金工资</p></li>
+				<li class="layui-icon layui-icon-rmb funct_gongzib"><p>100佣金工资</p></li>
+				-->
+				<div class="clear"></div>
+			</ul>
+		</div>
+	</div>
+	<script type="text/javascript">
+    //复制链接
+    var shareTitle = "{$user.user_login}" ;
+    var endvar = "&v="+randomString(32);
+    var shareText = shareTitle
+    function randomString(len) {
+        len = len || 32;
+        var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
+        var maxPos = $chars.length;
+        var pwd = '';
+        for (i = 0; i < len; i++) {
+            pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+        }
+        return pwd;
+    }
+    var copyCut = function(){
+        if(navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)){
+            window.getSelection().removeAllRanges();//这段代码必须放在前面否则无效
+            //var Url2=document.getElementById("biaoios");//要复制文字的节点
+            const targetText = document.createTextNode(shareText);
+            document.body.appendChild(targetText);
+            var range = document.createRange();
+            // 选中需要复制的节点
+            range.selectNode(targetText);
+            // 执行选中元素
+            window.getSelection().addRange(range);
+            // 执行 copy 操作
+            if(document.execCommand('copy')){
+                document.execCommand('copy');
+                showPointReulst(1)
+            }else showPointReulst(2);
+            // 移除选中的元素
+            window.getSelection().removeAllRanges();
+            $(targetText).remove();
+        }else{
+            const input = document.createElement('input');
+            document.body.appendChild(input);
+            input.setAttribute('value', shareText);
+            input.select();
+            if (document.execCommand('copy')) {
+                document.execCommand('copy');
+                showPointReulst(1)
+            }else showPointReulst(2);
+            $(input).remove();
+        }
+    }
+
+
+    var showPointReulst = function(type){
+        $(".pointBag").remove();
+        
+        if(type==1){
+        layer.msg('复制成功',{time: 500}); return ;    
+        }else{
+         layer.msg('复制失败',{time: 500}); return ;   
+        }
+     
+    }
+</script>
+	<!--主体屏幕区域-->
+	<div class="main">
+		<p class="top_tishi">已到最顶端了...</p>
+		<ul class="list_honbao">
+			
+		</ul>
+	</div>
+
+	<!--功能块区域-->
+
+	<!--客服-->
+
+	<div class="kefub_DOM">
+		<img class="kefuimgb" src="/upload/{$conf.site_admin_kfimg}" />
+	</div>
+	<!--玩法-->
+	<div class="wanfa_DOM">
+		<img class="wanfaimg" src="" />
+	</div>
+	<!--玩法-->
+	<style>
+	.czkefu_DOM {
+	    display: none;
+	    padding: 10px;
+	    text-align: center;
+	}
+	.czkefu_DOM .czkefu {
+	    width: 100%;
+	}
+	</style>
+	<div class="czkefu_DOM" >
+		<img class="czkefu" src="" />
+	</div>
+	<!--推广轮播图-->
+	<div class="layui-carousel tuiguang_DOM" lay-filter="tuiguang_DOM">
+		<div carousel-item>
+			<div class="tgimga">正在加载中...</div>
+			<div>正在加载中...</div>
+		</div>
+	</div>
+	<!--充值-->
+	<div class="chongzhi_DOM">
+		<fieldset class="layui-elem-field layui-field-title">
+			<legend class="czbiaoti">充值金额</legend>
+		</fieldset>
+		<div class="zftype">
+			<form class="layui-form layui-form-pane" lay-filter="zftypefrom">
+				<div class="zfzu" lay-filter="zfzus" pane>
+
+				</div>
+			</form>
+		</div>
+		<div class="layui-btn-container">
+			
+
+			<div class="czbtnzu">
+				
+			</div>
+
+		</div>
+
+	</div>
+	<!--开红包-->
+	<div class="kaihonbao">
+		<div class="layui-layer-close kaihb_close"></div>
+		<div class="khb_content">
+			<p>
+				<!--发包-->
+				<span style="color:#ffe0a5"><img class="kaihb_font_a_a" src="/static/hongbao/img/tx.jpg"/></span>
+				<span class="kaihb_font_a" style="overflow:hidden"></span>
+			</p>
+			<p class="kaihb_font_b"></p>
+			<p class="kaihb_font_c"><span class="kaihb_font_c_span"></span></p>
+		</div>
+		<input class="kaibtn" type="image" src="/static/hongbao/img/khb.png" />
+		<div class="lqlist">
+			<ul class="lqlistul">
+				<li>
+
+				</li>
+			</ul>
+		</div>
+		<p class="lqtishi"></p>
+	</div>
+	<!--转账-->
+    <div class="zhuanzhang">
+	    <div class="layui-col-xs6">
+	     <div class="layui-card">
+	        <div class="layui-card-header">转账金币</div>
+	        <div class="layui-card-body">
+	          <input id="rg-money" type="number" name="money"  placeholder="￥" maxlength="5"  oninput="value=value.replace(/[^\d]/g,'');if(value.length>5)value=value.slice(0,5)" autocomplete="off" class="layui-input cg-money">
+	          <p class="rg-inptfont">当前金币&nbsp;<span class="rg-dyue zzmoney"></span>&nbsp;元</p>
+	        </div>
+	      </div>
+	    </div>
+	    <div class="layui-col-xs1">
+	    	<div class="jiantou">
+	    		<i class="layui-icon layui-icon-next jiantouico"></i> 
+	    	</div>
+	    </div>
+	    <div class="layui-col-xs5">
+	     <div class="layui-card">
+	        <div class="layui-card-header">收款用户</div>
+	        <div class="layui-card-body">
+	          <input id="rg-money" type="text" name="skuserid"  placeholder="ID" maxlength="5" autocomplete="off" class="layui-input cg-skuserid">
+	          <p class="rg-inptfont">收款方&nbsp;<span class="rg-dyue">ID</span>&nbsp;号</p>
+	        </div>
+	      </div>
+	    </div>
+	    <div class="layui-col-xs12 zzbtn "><button class="zhuanbtn layui-btn layui-btn-sm layui-btn-fluid layui-btn-danger">立即转账</button></div>
+	    <div class="clear"></div>
+    </div>
+
+	<!--明细-->
+	<div class="mingxi">
+		<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+			<ul class="layui-tab-title mingxiul">
+				<li class="layui-this">游戏明细</li>
+				<li>充值明细</li>
+				<li>提现明细</li>
+				<li>佣金明细</li>
+			</ul>
+			<div class="layui-tab-content">
+				<div class="layui-tab-item layui-show mx_a">
+
+				</div>
+				<div class="layui-tab-item mx_b">
+					
+				</div>
+				<div class="layui-tab-item mx_c">
+					
+				</div>
+				<div class="layui-tab-item mx_d">
+					
+				</div>
+			</div>
+		</div>  
+	</div>
+	
+	<!--佣金福利-->
+	<div class="yjfuli">
+		<fieldset class="layui-elem-field layui-field-title yjfulibt">
+			<legend>佣金福利</legend>
+		</fieldset>
+		<div class="flist">
+			
+		</div>
+		<blockquote class="layui-elem-quote yjfllist">
+			<span class="flcontent flzuihou">总佣金满18888以上可成为平台股东享受平台每日分红！</span>
+		</blockquote>
+	</div>
+
+	<!--下级概念-->
+	<div class="xiaji_DOM">
+		<fieldset class="layui-elem-field layui-field-title agent_info" style="margin-bottom: 0px;">
+			<legend>佣金信息</legend>
+			<div class="layui-field-box">
+				<table lay-size="sm" class="layui-table">
+					<thead>
+						<tr>
+							<th>今日佣金</th>
+							<th>历史佣金</th>
+							<th>直属上级</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="daymoney"></td>
+							<td class="lsyjmoney"></td>
+							<td class="zsshangji"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</fieldset>
+		<div style="margin-top:-10px;color:#666">
+			<p>佣金余额:<span class="newyjjine"></span>元</p>
+			<button type="button" class="layui-btn layui-btn-normal layui-btn-sm yjwith">佣金提现</button>
+		</div>
+		<fieldset class="layui-elem-field layui-field-title agent_info">
+			<legend>下级概念</legend>
+			<div class="layui-field-box">
+				<table lay-size="sm" class="layui-table">
+					<thead>
+						<tr>
+							<th>等级</th>
+							<th>人数</th>
+							<th>佣金</th>
+						</tr>
+					</thead>
+					<tbody class="djmingxi">
+						
+					</tbody>
+				</table>
+			</div>
+		</fieldset>
+
+		<fieldset class="layui-elem-field layui-field-title agent_info" id="moreMerchant">
+			<legend>佣金利率</legend>
+			<div class="layui-field-box">
+				<table lay-size="sm" class="layui-table">
+					<thead>
+						<tr>
+							<th>等级</th>
+							<th>利率</th>
+						</tr>
+					</thead>
+					<tbody class="yjbl">
+						
+					</tbody>
+				</table>
+			</div>
+		</fieldset>
+	</div>
+	<!--发红包-->
+	<div class="fahb_DOM">
+		<div class="layui-field-box layui-form">
+			<div class="layui-form-item">
+				<label class="layui-form-label">红包大小：</label>
+				<button class="fahb_a_jian tiaosz fleft layui-btn layui-btn-normal layui-btn-xs">－</button>
+				<input class="fahb_money layui-input jqr_input" name="fa_money" value="10" lay-verify="required|number|zint|hbmoney" lay-verType="tips" type="number">
+				<button class="fahb_a_jia tiaosz fleft layui-btn layui-btn-normal layui-btn-xs">＋</button>
+				<span class="fleft danwei">金币</span>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">红包雷号：</label>
+				<button class="fahb_b_jian tiaosz fleft layui-btn layui-btn-normal layui-btn-xs">－</button>
+				<input class="fahb_leinum layui-input jqr_input" name="fa_leinum" value="5" lay-verify="required|number|leinum" lay-verType="tips" type="number">
+				<button class="fahb_b_jia tiaosz fleft layui-btn layui-btn-normal layui-btn-xs">＋</button>
+				<span class="fleft danwei"></span>
+			</div>
+			<div class="layui-form-item okbtn" >
+				<button class="layui-btn layui-btn-danger layui-btn-sm" lay-submit lay-filter="fahbbtn">立即发送</button>
+			</div>
+		</div>
+		<hr>
+		<p class="fahonbao_tishi">1、发红包有人"中雷"可获得红包总额1.6倍/人;</p>
+		<p class="fahonbao_tishi">2、抢红包若"踩雷"需按红包总额赔偿1.6倍;</p>
+	</div>
+	<!--机器人托管-->
+	<div class="jiqiren">
+		<fieldset class="layui-elem-field">
+			<legend>自动抢包</legend>
+			<div class="layui-field-box layui-form">
+				<div class="layui-form-item">
+					<label class="layui-form-label">时间频率：</label>
+					<button class="qian_a_jian tiaosz fleft layui-btn layui-btn-normal layui-btn-xs">－</button>
+					<input class="qian_time layui-input jqr_input" name="qian_time" value="10" lay-verify="required|number|zint|shis" lay-verType="tips" type="number">
+					<button class="qian_a_jia tiaosz fleft layui-btn layui-btn-normal layui-btn-xs">＋</button>
+					<span class="fleft danwei">秒</span>
+				</div>
+				<div class="layui-form-item okbtn" >
+					<button class="qianbtn layui-btn layui-btn-danger layui-btn-sm" lay-submit lay-filter="qianbtn">开启</button>
+				</div>
+			</div>
+		</fieldset>
+		<fieldset class="layui-elem-field">
+			<legend>自动发包</legend>
+			<div class="layui-field-box layui-form">
+				<div class="layui-form-item">
+					<label class="layui-form-label">红包大小：</label>
+					<button class="fa_a_jian tiaosz fleft layui-btn layui-btn-normal layui-btn-xs">－</button>
+					<input class="fa_money layui-input jqr_input" name="fa_money" value="10" lay-verify="required|number|zint|hbmoney" lay-verType="tips" type="number">
+					<button class="fa_a_jia tiaosz fleft layui-btn layui-btn-normal layui-btn-xs">＋</button>
+					<span class="fleft danwei">金币</span>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">红包雷号：</label>
+					<button class="fa_b_jian tiaosz fleft layui-btn layui-btn-normal layui-btn-xs">－</button>
+					<input class="fa_leinum layui-input jqr_input" name="fa_leinum" value="5" lay-verify="required|number|leinum" lay-verType="tips" type="number">
+					<button class="fa_b_jia tiaosz fleft layui-btn layui-btn-normal layui-btn-xs">＋</button>
+					<span class="fleft danwei"></span>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">时间频率：</label>
+					<button class="fa_c_jian tiaosz fleft layui-btn layui-btn-normal layui-btn-xs">－</button>
+					<input class="fa_time layui-input jqr_input" name="fa_time" value="1" lay-verify="required|number|zint" lay-verType="tips" type="number">
+					<button class="fa_c_jia tiaosz fleft layui-btn layui-btn-normal layui-btn-xs">＋</button>
+					<span class="fleft danwei">分</span>
+				</div>
+				<div class="layui-form-item okbtn" >
+					<button class="fabtn layui-btn layui-btn-danger layui-btn-sm" lay-submit lay-filter="fabtn">开启</button>
+				</div>
+			</div>
+		</fieldset>
+		<p class="jqr_tishi"></p>
+	</div>
+
+
+<script src="/static/hongbao/layui/layui.js"></script>
+<script src="/static/hongbao/js/main.js?v=78"></script>
+<audio src="" autoplay="" id="hint"></audio>
+<script>
+	
+	window.name="{$user.avatar}"
+		function idus(){
+		 var id = $(".kaihb_font_a").text()
+		alert(id);
+	}
+
+	window.media = new Audio("/audio/kai.m4a");
+	$(".kaibtn").bind('click',function(){
+		media.play();
+	})
+</script>
+<script>
+	$(".info").click(function(){
+		alert("22")
+	})
+</script>
+</body>
+</html>

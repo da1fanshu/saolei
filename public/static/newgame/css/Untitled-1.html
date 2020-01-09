@@ -1,0 +1,1840 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<title>新启旺</title>
+<link rel="apple-touch-icon-precomposed" href="http://image.8nzmt.cn/iphone/images/logoface.png">
+<link rel="stylesheet" type="text/css"	href="http://image.8nzmt.cn/iphone/styles/app.css">
+<style type="text/css">
+	.box{ width:21.857142857142857142857142857143rem;overflow:scroll; -webkit-overflow-scrolling:touch;-moz-overflow-scrolling:touch;-o-overflow-scrolling:touch}
+	
+	.bettingHeader{padding:0.5rem 0}
+	.bettingHeader div{text-align:center;}
+	.bettingHeader div:nth-child(2){font-weight:bold;}
+	.bettingHeader div:nth-child(2) span{display:inline-block;width:2rem;height:2rem;background:#c00;border-radius:100%;color:#FFF;font-size:1.25rem;vertical-align:middle;}
+	
+	.number{width:100%;overflow:hidden;padding:0 1rem;}
+	.number li{float:left;display:inline;width:20%;margin:0.5rem 0;text-align:center;}
+	.number li a{display:inline-block;width:3rem;height:3rem;background:#999;border-radius:100%;color:#FFF;font-size:1.25rem;line-height:3rem;}
+	.number li.active a{background:#cc0000;}
+	.number.wan li a{background:#E7E7C4;color:#666;}
+	.number.qian li a{background:#D9E1E1;color:#666;}
+	.number.wan li.active a{background:#F60;color:#FFF;}
+	.number.qian li.active a{background:#06c;color:#FFF;}
+	.number.bai li a{background:#E7E7C4;color:#666;}
+	.number.shi li a{background:#D9E1E1;color:#666;}
+	.number.ge li a{background:#E7E7C4;color:#666;}
+	.number.bai li.active a{background:#F60;color:#FFF;}
+	.number.shi li.active a{background:#06c;color:#FFF;}
+	.number.ge li.active a{background:#F60;color:#FFF;}
+	
+	.number2{width:100%;overflow:hidden;padding:0 1rem;}
+	.number2 li{float:left;display:inline;width:33%;margin:0.5rem 0;text-align:center;}
+	.number2 li a{display:inline-block;width:5.5rem;height:2.55rem;background:#f6f6f6;box-shadow:1px 1px 3px rgba(0,0,0,0.5);border-radius:6px;border-bottom:3px solid #ccc;border-right:3px solid #ccc;color:#666;font-size:1.01rem;line-height:2.2}
+	.number2 li a p{font-size:0.625rem;line-height:0;}
+	.number2 li.active a{background:#FF5E43;border-bottom:3px solid #D85139;border-right:3px solid #D85139;color:#FFF;}
+	
+	.toBetting{display:-webkit-box; display:-moz-box; display:box;/* width:100%;padding:1rem;font-size:0.75rem; */}
+	.toBetting div{-webkit-box-flex:1.0;-moz-box-flex:1.0;box-flex:1.0;line-height:3;}
+	
+	.tableTrend{}
+	.tableTrend tbody{}
+	.tableTrend tbody tr{}
+	.tableTrend tbody tr td{padding:0.1rem;}
+	.tableTrend tbody tr td span{display:block;width:1.25rem;height:1.25rem;background:#cc0000;border-radius:100%;color:#FFF;text-align:center;line-height:1.25rem;}
+	.lenghao{display:block;width:1.25rem;height:1.25rem;background:#2828ff;color:#FFF;text-align:center;line-height:1.25rem;}
+	
+	.tableTrend tbody tr td span.wan{background:#F60;color:#FFF;}
+	.tableTrend tbody tr td span.qian{background:#06C;color:#FFF;}
+	.tableTrend tbody tr td span.bai{background:#F60;color:#FFF;}
+	.tableTrend tbody tr td span.shi{background:#06C;color:#FFF;}
+	.tableTrend tbody tr td span.ge{background:#F60;color:#FFF;}
+	
+	.zoushic tr td{padding:0.1rem;}
+	.zoushic tr td span{display:block;width:1.25rem;height:1.25rem;background:#cc0000;border-radius:100%;color:#FFF;text-align:center;line-height:1.25rem;}
+	.zoushic tr td span.wan{background:#F60;color:#FFF;}
+	.zoushic tr td span.qian{background:#06C;color:#FFF;}
+	.zoushic tr td span.bai{background:#F60;color:#FFF;}
+	.zoushic tr td span.shi{background:#06C;color:#FFF;}
+	.zoushic tr td span.ge{background:#F60;color:#FFF;}
+	.chat .othersinfo li:last-child span{background:#F6F6F6;}
+	
+     #content{text-indent:2em;}  
+</style>
+</head>
+<body style="padding-bottom:3.75rem;">
+   <input type="hidden" name="token" id="token" value="OOUKW6ID7ACC2X6ATQQT5MY9LJG6P6K0" />
+   <div style="position:absolute;top:0.2rem;left:0.2rem;">
+		<a href="/betBouns.action" class="button button-health button-xsm">会员消息</a>
+	</div>
+   
+	<div class="bettingHeader">
+		<div><span id="curactionno"></span></div>
+		<div id="sjz"><span id="lotteryno1">8</span> <span id="lotteryno2">8</span> <span id="lotteryno3">8</span> 
+		<span id="lotteryno4">8</span> <span id="lotteryno5">8</span>
+		  <span style="font-size:0.75rem;line-height:2rem;background:#0066CC" id="th">發</span>
+		  <span style="background:#F60;" id="lh">發</span> <a href="#" class="button button-primary button-sm" id="trend">走势图</a>
+		 </div>
+		<div id="kjz" style="display:none"><span  class="clr-orange" style="font-size:1.25rem;">正在开奖中• • • </span><a href="#" class="button button-primary button-sm" id="trend">走势图</a></div>
+		<div><span id="nextactionno"></span> <font color="red"><span id="nextmsg">官方线路连接中• • •</span></font></div>
+	</div>
+
+	<div class="group">
+		<div class="group-item">
+			<div class="group-rowspan">
+				<div class="group-colspan">
+
+					<div class="tab">
+						<ul class="tab-handle">
+							<li class="active" data-value="1"><a href="#tabs1" data-toggle="tab">特码</a></li>
+							<li data-value="8"><a href="#tabs8" data-toggle="tab">定位</a></li>
+							<li data-value="2"><a href="#tabs2" data-toggle="tab">单<span></span>码</a></li>
+							<li data-value="4"><a href="#tabs4" data-toggle="tab">龙虎</a></li>
+<!-- 							<li data-value="7"><a href="#tabs7" data-toggle="tab">组选</a></li> -->
+							<li data-value="3"><a href="#tabs3" data-toggle="tab">连号</a></li>
+						</ul>
+					</div>
+	
+					<div class="tab-content">
+						<!-- tab1 -->
+						<div class="tab-pane active" id="tabs1">
+						
+						<div style="padding:0.5rem;font-size:0.875rem;">
+								<font color="red">开奖号码为腾讯分<span></span>分彩</font>
+							</div>
+				 	<span id="contentc">  
+						<div style="padding:0.5rem;font-size:0.875rem;">
+				 		                          开奖走势和号码规则可到https://mma.qq.com/cgi-bin/im/online查询
+								<p><font color="orange">游戏时间：</font>24小时开放</p>
+								<p><font color="orange">玩法说明：</font>玩法跟重庆时时彩一摸一样</p>
+								<p><font color="orange">开奖号码：</font>腾讯分分彩采用的是腾讯官方每分钟统计的在线人数，在线人数的后四位作为开奖号的“千百十个”位，万位是在线人数每位数字之和的尾数，如在线人数256020364，则开奖号为80364。</p>
+								<p><font color="orange">撤单说明：</font>如果腾讯在线人数该分钟内官网未更新，视作本期无开奖号，10分钟后统一撤单；如果官方号码正常，平台未开奖的将补开奖。</p>
+						</div>
+ 					</span>  
+   					<a href=""  id="btn"><<<收缩</a>
+   
+							<div style="padding:0.5rem;font-size:0.875rem;">
+								<p><font color="orange">赔<span></span>率：</font><font color="red">1赔9.7</font>&nbsp;(赔率含本金)&nbsp;
+								<font color="orange">投注限制：</font><font color="red">1</font>元-<font color="red">5000</font>元</p>
+							</div>
+							<ul class="number">
+								&nbsp;
+								<a href="javascript:void(0)" class="button2 button-primary2" id="temada">大</a>&nbsp;&nbsp;&nbsp;&nbsp;
+								<a href="javascript:void(0)" class="button2 button-primary2" id="temax">小</a>&nbsp;&nbsp;&nbsp;&nbsp;
+								<a href="javascript:void(0)" class="button2 button-primary2" id="temad">单</a>&nbsp;&nbsp;&nbsp;&nbsp;
+								<a href="javascript:void(0)" class="button2 button-primary2" id="temas">双</a>&nbsp;&nbsp;&nbsp;&nbsp;
+								<a href="javascript:void(0)" class="button2 button-primary2" id="temaq">清</a>
+							</ul>
+							<ul class="number">
+								<li><a href="javascript:void(0)">0</a></li>
+								<li><a href="javascript:void(0)">1</a></li>
+								<li><a href="javascript:void(0)">2</a></li>
+								<li><a href="javascript:void(0)">3</a></li>
+								<li><a href="javascript:void(0)">4</a></li>
+								<li><a href="javascript:void(0)">5</a></li>
+								<li><a href="javascript:void(0)">6</a></li>
+								<li><a href="javascript:void(0)">7</a></li>
+								<li><a href="javascript:void(0)">8</a></li>
+								<li><a href="javascript:void(0)">9</a></li>
+							</ul>
+						</div>
+					
+						<div class="tab-pane" id="tabs8">
+						<span id="contentc2">  
+							<div style="padding:0.5rem;font-size:0.875rem;">
+								<p><font color="orange">玩法说明：</font>玩法跟特码相同，特码为开奖号的最后一位(个位)，定位玩法可以分别对开奖号的万位、千位、百位、十位、个位进行投注</p>
+							</div>
+						</span>  
+   						<a href=""  id="btn2"><<<收缩</a>
+							<div style="padding:0.5rem;font-size:0.875rem;">
+								<p><font color="orange">赔率：</font><font color="red">1赔9.7</font>&nbsp;(赔率含本金)&nbsp;
+								<font color="orange">投注限制：</font><font color="red">1</font>元-<font color="red">5000</font>元</p>
+							</div>
+							
+							<div style="position:relative;">
+								<div style="position:absolute;top:3rem;"><font color="#F60">万<br><br>位</font></div>
+								
+								<ul class="number">
+									&nbsp;
+									<a href="javascript:void(0)" class="button2 button-primary2" id="wanda">大</a>&nbsp;&nbsp;&nbsp;&nbsp;
+									<a href="javascript:void(0)" class="button2 button-primary2" id="wanx">小</a>&nbsp;&nbsp;&nbsp;&nbsp;
+									<a href="javascript:void(0)" class="button2 button-primary2" id="wand">单</a>&nbsp;&nbsp;&nbsp;&nbsp;
+									<a href="javascript:void(0)" class="button2 button-primary2" id="wans">双</a>&nbsp;&nbsp;&nbsp;&nbsp;
+									<a href="javascript:void(0)" class="button2 button-primary2" id="wanq">清</a>
+								</ul>
+								
+								<ul class="number wan">
+									<li><a href="javascript:void(0)">0</a></li>
+									<li><a href="javascript:void(0)">1</a></li>
+									<li><a href="javascript:void(0)">2</a></li>
+									<li><a href="javascript:void(0)">3</a></li>
+									<li><a href="javascript:void(0)">4</a></li>
+									<li><a href="javascript:void(0)">5</a></li>
+									<li><a href="javascript:void(0)">6</a></li>
+									<li><a href="javascript:void(0)">7</a></li>
+									<li><a href="javascript:void(0)">8</a></li>
+									<li><a href="javascript:void(0)">9</a></li>
+								</ul>
+							</div>
+							<div style="position:relative;">
+								<div style="position:absolute;top:3rem;"><font color="#06C">千<br><br>位</font></div>
+								
+								<ul class="number">
+									&nbsp;
+									<a href="javascript:void(0)" class="button2 button-primary2" id="qianda">大</a>&nbsp;&nbsp;&nbsp;&nbsp;
+									<a href="javascript:void(0)" class="button2 button-primary2" id="qianx">小</a>&nbsp;&nbsp;&nbsp;&nbsp;
+									<a href="javascript:void(0)" class="button2 button-primary2" id="qiand">单</a>&nbsp;&nbsp;&nbsp;&nbsp;
+									<a href="javascript:void(0)" class="button2 button-primary2" id="qians">双</a>&nbsp;&nbsp;&nbsp;&nbsp;
+									<a href="javascript:void(0)" class="button2 button-primary2" id="qianq">清</a>
+								</ul>
+								<ul class="number qian">
+									<li><a href="javascript:void(0)">0</a></li>
+									<li><a href="javascript:void(0)">1</a></li>
+									<li><a href="javascript:void(0)">2</a></li>
+									<li><a href="javascript:void(0)">3</a></li>
+									<li><a href="javascript:void(0)">4</a></li>
+									<li><a href="javascript:void(0)">5</a></li>
+									<li><a href="javascript:void(0)">6</a></li>
+									<li><a href="javascript:void(0)">7</a></li>
+									<li><a href="javascript:void(0)">8</a></li>
+									<li><a href="javascript:void(0)">9</a></li>
+								</ul>
+							</div>
+							<div style="position:relative;">
+								<div style="position:absolute;top:3rem;"><font color="#F60">百<br><br>位</font></div>
+								
+								<ul class="number">
+									&nbsp;
+									<a href="javascript:void(0)" class="button2 button-primary2" id="baida">大</a>&nbsp;&nbsp;&nbsp;&nbsp;
+									<a href="javascript:void(0)" class="button2 button-primary2" id="baix">小</a>&nbsp;&nbsp;&nbsp;&nbsp;
+									<a href="javascript:void(0)" class="button2 button-primary2" id="baid">单</a>&nbsp;&nbsp;&nbsp;&nbsp;
+									<a href="javascript:void(0)" class="button2 button-primary2" id="bais">双</a>&nbsp;&nbsp;&nbsp;&nbsp;
+									<a href="javascript:void(0)" class="button2 button-primary2" id="baiq">清</a>
+								</ul>
+								<ul class="number bai">
+									<li><a href="javascript:void(0)">0</a></li>
+									<li><a href="javascript:void(0)">1</a></li>
+									<li><a href="javascript:void(0)">2</a></li>
+									<li><a href="javascript:void(0)">3</a></li>
+									<li><a href="javascript:void(0)">4</a></li>
+									<li><a href="javascript:void(0)">5</a></li>
+									<li><a href="javascript:void(0)">6</a></li>
+									<li><a href="javascript:void(0)">7</a></li>
+									<li><a href="javascript:void(0)">8</a></li>
+									<li><a href="javascript:void(0)">9</a></li>
+								</ul>
+							</div>
+							<div style="position:relative;">
+								<div style="position:absolute;top:3rem;"><font color="#06C">十<br><br>位</font></div>
+								
+								<ul class="number">
+									&nbsp;
+									<a href="javascript:void(0)" class="button2 button-primary2" id="shida">大</a>&nbsp;&nbsp;&nbsp;&nbsp;
+									<a href="javascript:void(0)" class="button2 button-primary2" id="shix">小</a>&nbsp;&nbsp;&nbsp;&nbsp;
+									<a href="javascript:void(0)" class="button2 button-primary2" id="shid">单</a>&nbsp;&nbsp;&nbsp;&nbsp;
+									<a href="javascript:void(0)" class="button2 button-primary2" id="shis">双</a>&nbsp;&nbsp;&nbsp;&nbsp;
+									<a href="javascript:void(0)" class="button2 button-primary2" id="shiq">清</a>
+								</ul>
+								<ul class="number shi">
+									<li><a href="javascript:void(0)">0</a></li>
+									<li><a href="javascript:void(0)">1</a></li>
+									<li><a href="javascript:void(0)">2</a></li>
+									<li><a href="javascript:void(0)">3</a></li>
+									<li><a href="javascript:void(0)">4</a></li>
+									<li><a href="javascript:void(0)">5</a></li>
+									<li><a href="javascript:void(0)">6</a></li>
+									<li><a href="javascript:void(0)">7</a></li>
+									<li><a href="javascript:void(0)">8</a></li>
+									<li><a href="javascript:void(0)">9</a></li>
+								</ul>
+							</div>
+							<div style="position:relative;">
+								<div style="position:absolute;top:3rem;"><font color="#F60">个<br><br>位</font></div>
+								
+								<ul class="number">
+									&nbsp;
+									<a href="javascript:void(0)" class="button2 button-primary2" id="geda">大</a>&nbsp;&nbsp;&nbsp;&nbsp;
+									<a href="javascript:void(0)" class="button2 button-primary2" id="gex">小</a>&nbsp;&nbsp;&nbsp;&nbsp;
+									<a href="javascript:void(0)" class="button2 button-primary2" id="ged">单</a>&nbsp;&nbsp;&nbsp;&nbsp;
+									<a href="javascript:void(0)" class="button2 button-primary2" id="ges">双</a>&nbsp;&nbsp;&nbsp;&nbsp;
+									<a href="javascript:void(0)" class="button2 button-primary2" id="geq">清</a>
+								</ul>
+								<ul class="number ge">
+									<li><a href="javascript:void(0)">0</a></li>
+									<li><a href="javascript:void(0)">1</a></li>
+									<li><a href="javascript:void(0)">2</a></li>
+									<li><a href="javascript:void(0)">3</a></li>
+									<li><a href="javascript:void(0)">4</a></li>
+									<li><a href="javascript:void(0)">5</a></li>
+									<li><a href="javascript:void(0)">6</a></li>
+									<li><a href="javascript:void(0)">7</a></li>
+									<li><a href="javascript:void(0)">8</a></li>
+									<li><a href="javascript:void(0)">9</a></li>
+								</ul>
+							</div>
+						</div>
+						<!-- tab2 -->
+						<div class="tab-pane" id="tabs2">
+							<div style="padding:0.5rem;font-size:0.875rem;">
+								<p><font color="orange">玩法说明：</font>请至少选择1个号码进行投注，开奖号码包含投注号码为中奖</p>
+								<p><font color="orange">赔率：</font><font color="red">1赔2.2</font>&nbsp;&nbsp;(赔率含本金)
+								<br><font color="orange">投注限制：</font><font color="red">1</font>元-<font color="red">50000</font>元</p>
+							</div>
+							
+							<ul class="number">
+								<li><a href="javascript:void(0)">0</a></li>
+								<li><a href="javascript:void(0)">1</a></li>
+								<li><a href="javascript:void(0)">2</a></li>
+								<li><a href="javascript:void(0)">3</a></li>
+								<li><a href="javascript:void(0)">4</a></li>
+								<li><a href="javascript:void(0)">5</a></li>
+								<li><a href="javascript:void(0)">6</a></li>
+								<li><a href="javascript:void(0)">7</a></li>
+								<li><a href="javascript:void(0)">8</a></li>
+								<li><a href="javascript:void(0)">9</a></li>
+							</ul>
+						</div>
+						
+						<!-- tab3 -->
+						<div class="tab-pane" id="tabs3">
+							<div style="padding:0.5rem;font-size:0.875rem;">
+								<p><font color="orange">玩法说明：</font>请至少选择2个号码进行投注，开奖号码包含全部投注号码为中奖</p>
+								<p><font color="orange">赔率：</font>[2连]<font color="red">1赔4</font>&nbsp;&nbsp;
+								[3连]<font color="red">1赔15</font>&nbsp;&nbsp;
+								<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								[4连]<font color="red">1赔50</font>&nbsp;&nbsp;
+								[5连]<font color="red">1赔200</font>&nbsp;(赔率含本金)&nbsp;
+								<br><font color="orange">投注限制：</font>[2连]<font color="red">1</font>-<font color="red">500</font>元
+								[3连]<font color="red">1</font>-<font color="red">350</font>元
+								<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								[4连]<font color="red">1</font>-<font color="red">200</font>元
+								[5连]<font color="red">1</font>-<font color="red">100</font>元</p>
+							</div>
+							
+							<ul class="number">
+								<li><a href="javascript:void(0)">0</a></li>
+								<li><a href="javascript:void(0)">1</a></li>
+								<li><a href="javascript:void(0)">2</a></li>
+								<li><a href="javascript:void(0)">3</a></li>
+								<li><a href="javascript:void(0)">4</a></li>
+								<li><a href="javascript:void(0)">5</a></li>
+								<li><a href="javascript:void(0)">6</a></li>
+								<li><a href="javascript:void(0)">7</a></li>
+								<li><a href="javascript:void(0)">8</a></li>
+								<li><a href="javascript:void(0)">9</a></li>
+							</ul>
+							
+							<div>
+								<div class="toBetting">
+									<div><input type="text" value="" id="linknumber" readonly="true" style="border:1px solid #eee;height:3rem;padding:0 0.5rem;font-size:1.25rem;"></div>
+									<div><a href="javascript:void(0)" class="button button-primary" id="resetNumber">清除重选</a></div>
+								</div>
+							</div>
+							
+						</div>
+						
+						<!-- tab4 -->
+						<div class="tab-pane" id="tabs4">
+							<div style="padding:0.5rem;font-size:0.875rem;">
+								<p><font color="orange">玩法说明：</font>开奖号号首位大于尾位为虎，首位小于尾位为龙，首尾号码相同为合，开合通吃龙虎。</p>
+								<p><font color="orange">赔率：</font>龙虎<font color="red">1赔2</font>&nbsp;&nbsp;
+								合<font color="red">1赔8</font>&nbsp;(赔率含本金)&nbsp;<br>
+								<font color="orange">投注限制：</font>龙虎<font color="red">1</font>元-<font color="red">50000</font>元
+								合：<font color="red">1</font>元-<font color="red">500</font>元</p>
+							</div>
+							<ul class="number">
+								<li><a href="javascript:void(0)">龙</a></li>
+								<li><a href="javascript:void(0)">虎</a></li>
+								<li><a href="javascript:void(0)">合</a></li>
+							</ul>
+						</div>
+						
+						<div class="tab-pane" id="tabs7">
+							<div style="padding:0.5rem;font-size:0.875rem;">
+								<p><font color="orange">玩法说明：</font>对3个连续的开奖号码形态进行投注，3个号码中有2个一样为组三(顺序无关)、3个全不同为组六。如开奖号码【58534】前三585为组三、中三853为组六、后三534为组六</p>
+								<p><font color="orange">组三赔率：</font><font color="red">1赔3.3</font>&nbsp;&nbsp;
+								<font color="orange">组六赔率：</font><font color="red">1赔1.3</font>(赔率含本金)
+								<p><font color="orange">投注限制：</font><font color="red">1</font>元-<font color="red">3000</font>元</p>
+								
+							</div>
+							
+							<ul class="number2">
+								<li><a href="javascript:void(0)">前三组三</a></li>
+								<li><a href="javascript:void(0)">中三组三</a></li>
+								<li><a href="javascript:void(0)">后三组三</a></li>
+								<li><a href="javascript:void(0)">前三组六</a></li>
+								<li><a href="javascript:void(0)">中三组六</a></li>
+								<li><a href="javascript:void(0)">后三组六</a></li>
+							</ul>
+						</div>
+						
+						
+						<!-- 投注 -->
+						<div style="padding:1rem 0;">
+							<div style="margin-top:1rem;">余额：<span class="clr-orange"><em id="coin">0</em></span>元</div>
+							<div class="toBetting">
+								<div>每注投注：<input type="text" value="" id="price" style="border:1px solid #eee;width:8rem;height:2.5rem;padding:0 0.5rem"> 元</div>
+								<div style="text-align:right;"><a href="javascript:void(0)" class="button button-primary button-block" id="addBetting">投注</a></div>
+							</div>
+						</div>
+		
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="group">
+		<div class="group-item">
+			<div class="group-rowspan">
+				<div class="group-colspan">
+
+					<div class="tab">
+						<ul class="tab-handle">
+							<li class="active"><a href="#tabs6" data-toggle="tab" data-scroll="false">最新投注</a></li>
+						</ul>
+					</div>
+	
+					<div class="tab-content">
+						<!-- tabs1 -->
+						<div class="tab-pane " id="tabs5" style="position:relative;">
+							<div style="position:fixed;bottom:3.75rem;z-index:999;width:100%;background:#FFF;">
+								<textarea id="content" rows="" cols="" class="imo-textarea" style="width:15rem;height:3rem;border:1px solid #eee;vertical-align:middle;"></textarea>
+								<!-- 少了个隐藏input，去bbs-imo.html里考 -->
+								<a href="javascript:void(0)" id="send" class="button button-primary disabled">关闭</a>
+								<a href="javascript:void(0)" id="top" class="button button-primary">置顶</a>
+							</div>
+							
+							<div class="chat"  id="j-chatbox" style="max-height:30rem;overflow:scroll; -webkit-overflow-scrolling:touch;-moz-overflow-scrolling:touch;-o-overflow-scrolling:touch;margin-top:0;padding-bottom:3.75rem;">
+								<div id="j-chat">
+<!-- 								 <div class="chat-item-my"> -->
+<!-- 									<div class="time">2015-08-25 16:28:14</div> -->
+<!-- 									<ul class="myinfo"> -->
+<!-- 										<li><span>asdfasdf</span></li> -->
+<!-- 										<li><img src="/iphone/images/default.jpg" style="border-radius:6px;"></li> -->
+<!-- 									</ul> -->
+<!-- 								 </div> -->
+								</div>
+							</div>
+						</div>
+					
+						<!-- tabs2 -->
+						<div class="tab-pane active" id="tabs6">
+							<div class="box">
+								<table class="table" style="width:30rem;">
+									<thead>
+										<tr>
+											<th style="width:3rem;text-align:left;">期号</th>
+											<th style="width:2rem">玩法</th>
+											<th style="width:2rem">号码</th>
+											<th style="width:2rem">金额</th>
+											<th style="width:2rem">开奖号</th>
+											<th style="width:2rem">奖金</th>
+											<th style="width:2rem;text-align:right;">操作</th>
+										</tr>
+									</thead>
+									<tbody id="mybet">
+							            <tr>
+							            	<td colspan="7"><a href="/wdtj.action">点此查看今日投注记录</a></td>
+							            </tr>
+									</tbody>
+								</table>
+							</div> 
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+	<!-- 走势 -->
+	<div id="tableTrend" style="display:none;">
+		<table class="tableTrend">
+			<tbody id="zoushitu">
+			 <div class="tab" >
+					<ul class="tab-handle">
+						<li class="active"><a href="#tabsa" data-toggle="tab">号码走势</a></li>
+						<li ><a href="#tabsb" data-toggle="tab">大小走势</a></li>
+						<li ><a href="#tabsc" data-toggle="tab">单双走势</a></li>
+					</ul>
+				</div>
+				<div class="tab-content">
+					<div class="tab-pane zoushic active" id="tabsa">
+					</div>
+					<div class="tab-pane zoushic" id="tabsb">
+					</div>
+					<div class="tab-pane zoushic" id="tabsc">
+					</div>
+				</div>
+			</tbody>
+		</table>
+	</div>
+	
+<style>
+.nav li{width:20%;}
+</style>
+
+<div class="footer">
+	<ul class="nav" jumi-nav>
+		<li tabIndex="account">
+			<a href="/tengc557mPbxunc557mPbIndex.action">
+				<img src="http://image.8nzmt.cn/iphone/images/lottery/home.png" style="display:inline-block;">
+				<span class="clr-orange">回首页</span>
+			</a>
+		</li>
+		<li tabIndex="index">
+			<a href="/tec557mPbxfcc557mPb.action">
+				<img src="http://image.8nzmt.cn/iphone/img/index/ffc2.png?t=4" style="display:inline-block;">
+					<span class="clr-orange">騰訊彩</span>
+			</a>
+		</li>
+		<li tabIndex="index">
+			
+			<a href="/cqc557mPb10m.action">
+				<img src="http://image.8nzmt.cn/iphone/images/lottery/ssc.png" style="display:inline-block;">
+					<span class="clr-orange">重庆彩</span>
+			</a>
+		</li>
+		<li tabIndex="index">
+			<a href="/jack.action">
+				<img src="http://image.8nzmt.cn/iphone/img/index/21jack2.png?t=5" style="display:inline-block;">
+					<span class="clr-orange">21点</span>
+			</a>
+		</li>
+	</ul>
+</div>
+<style>
+#j-loading{
+	position:fixed;
+	top:0;
+	left:0;
+	z-index:1000;
+	width:100%;
+	height:100%;
+	background:rgba(0,0,0,0.3);
+}
+</style>
+<div id="j-loading">
+	<img src="http://image.8nzmt.cn/iphone/images/loading.gif" width="60" id="j-loadingimg"/>
+</div>
+<script type="text/javascript">
+	function load(){
+		document.getElementById("j-loading").style.width = window.innerWidth;
+		document.getElementById("j-loading").style.height = window.innerHeight;
+		document.getElementById("j-loadingimg").style.marginTop = (window.innerHeight - 60)/2 + "px";
+		document.getElementById("j-loadingimg").style.marginLeft = (window.innerWidth - 60)/2 + "px";
+	}
+	load();
+	window.onresize = function(){
+		load();
+	}
+	window.onload = function(){
+		document.getElementById("j-loading").style.display = 'none';
+	}
+</script>
+
+<script type="text/javascript" src="http://image.8nzmt.cn/iphone/javascripts/jquery/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="http://image.8nzmt.cn/iphone/javascripts/websocket/reconnecting-websocket.js"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="http://image.8nzmt.cn/iphone/javascripts/seajs/sea.js"></script>
+<script type="text/javascript" src="http://image.8nzmt.cn/iphone/javascripts/seajs/config.js"></script>
+<script type="text/javascript">
+//获取button按钮  
+var btn=document.getElementById('btn');  
+//获取p  
+var content=document.getElementById('contentc');  
+//获取p中的内容  
+var str=content.innerHTML;  
+//定义一个变量，表示当前的状态（收缩、展开）  
+var onOff=false;// true表示展开  
+content.innerHTML = str.substr(0,50)+"......";  
+btn.innerHTML='<font color="blue">>>>点击查看说明</font>'  
+btn.onclick=function(){  
+    if(onOff) {  
+        content.innerHTML = str.substr(0,50)+"......";  
+        btn.innerHTML='<font color="blue">>>>点击查看说明</font>'  
+    } else {  
+        //说明当前状态是收缩的，需要展开  
+        content.innerHTML = str  
+        btn.innerHTML = '<font color="blue"><<<隐藏说明</font>';  
+    }  
+    onOff=!onOff; //每点击一次，改变一次展开、收缩状态  
+    return false;  //阻止a标签的默认事件  
+}  
+
+var btn2=document.getElementById('btn2');  
+//获取p  
+var content2=document.getElementById('contentc2');  
+//获取p中的内容  
+var str2=content2.innerHTML;  
+//定义一个变量，表示当前的状态（收缩、展开）  
+var onOff2=false;// true表示展开  
+content2.innerHTML = str2.substr(0,50)+"......";  
+btn2.innerHTML='<font color="blue">>>>点击查看说明</font>'  
+btn2.onclick=function(){  
+  if(onOff2) {  
+      content2.innerHTML = str2.substr(0,50)+"......";  
+      btn2.innerHTML='<font color="blue">>>>点击查看说明</font>'  
+  } else {  
+      //说明当前状态是收缩的，需要展开  
+      content2.innerHTML = str2  
+      btn2.innerHTML = '<font color="blue"><<<隐藏说明</font>';  
+  }  
+  onOff2=!onOff2; //每点击一次，改变一次展开、收缩状态  
+  return false;  //阻止a标签的默认事件  
+}  
+	seajs.use(['jumi','tab','dpreview'],function(jumi){
+		
+		var interval=true;
+		var pre = decodeURIComponent(location.href.split('#')[0]);
+		var url=pre.split(".")[0]+"."+pre.split(".")[1]+"."+"com";
+
+		var isadmin="0";
+		var sharetitle="新启旺:公平、公正、安全游戏平台,提供多种好玩游戏!";
+		var sharedesc="新用户充值送红包、老玩家投注送红包，具体见系统首页[优惠活动](请长按收藏)";
+		var open="1";
+		var shareImg= url+"/data/upfiles/shareImg.jpg";
+		var	shareurl ="";
+		if(isadmin=='1'){
+			shareurl=url+"/load.action?room_id=Nw==";
+		}else{
+			shareurl=url+"/load.action?room_id=Nw==&inviteid=650,521";
+		}
+		
+		function is_weixin(){
+			var ua = navigator.userAgent.toLowerCase();
+			 if(ua.match(/MicroMessenger/i)=="micromessenger") { 
+				 return true;
+			 }else{
+				 return false;
+			 }
+		}
+		var para = {};
+		para.url = decodeURIComponent(location.href.split('#')[0]);
+		
+		if (is_weixin()) {
+			$.ajax({
+				url : '/initJs.action',
+				type : 'post',
+				//dataType : 'json',
+				data : para,
+				success : function(data) {
+					var jd = data;
+					if (jd.Res == 1) {
+						wx.config({
+							debug : false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+							appId : jd.app_id,// 'gh_784eadfde93c', // 必填，公众号的唯一标识
+							timestamp : jd.timestamp, // 必填，生成签名的时间戳
+							nonceStr : jd.noncestr, // 必填，生成签名的随机串
+							signature : jd.signature,// 必填，签名，见附录1
+							jsApiList : [ "onMenuShareTimeline",
+									"onMenuShareAppMessage", "onMenuShareQQ",
+									"onMenuShareWeibo", "chooseImage",
+									"previewImage", "getNetworkType", "scanQRCode",
+									"chooseWXPay" ]
+						// 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+						});
+					} else {
+						console.log(jd.Msg);
+					}
+				},
+				 error: function() {
+		         }
+			});
+		}
+		
+		wx.ready(function(){
+			wx.hideOptionMenu();
+			
+			
+		});
+		wx.error(function(res){
+			console.log(res);
+		});
+		$(document).on('click','[data-scroll]',function(){
+			var bool = $(this).data('scroll');
+			if(bool=='true'){
+				isscroll=true;
+			}else{
+				isscroll=false;
+			}
+		});
+		
+		//走势
+		var isscroll=false;
+ 		var clientId ='7-650521';
+		var nextactionno='';
+		var nextenable=false;
+		$(document).on('click','#trend',function(){
+			var para={};
+			 para.num=20;
+			 $.ajax({
+			        type:'post',
+			        url:'/queryTxHisLotteryNo.action',
+			        data:para,
+			        cache:false,
+			        dataType:'json',
+			        success:function(data){
+			        	if(data.success) {
+			        		var strdx="";
+			        		var strds="";
+			        		var str="<tr>"
+		        				+"<td><font color='#2828ff'>最冷未开次数</font></td>"
+		        				+"<td ><font color='#2828ff'>"+data.wan.times+"</font></td>"
+		        				+"<td ><font color='#2828ff'>"+data.qian.times+"</font></td>"
+		        				+"<td ><font color='#2828ff'>"+data.bai.times+"</font></td>"
+		        				+"<td ><font color='#2828ff'>"+data.shi.times+"</font></td>"
+		        				+"<td ><font color='#2828ff'>"+data.ge.times+"</font></td>"
+		        				+"<td></td>"
+		        				+"<td></td>"
+		        				+"<td></td>"
+		        				+"</tr>"
+		        				+"<tr>"
+		        				+"<td><font color='#2828ff'>最 冷 号 码</font></td>"
+		        				+"<td ><span2 class='lenghao'>"+data.wan.lotteryno+"</span2></td>"
+		        				+"<td ><span2 class='lenghao'>"+data.qian.lotteryno+"</span2></td>"
+		        				+"<td ><span2 class='lenghao'>"+data.bai.lotteryno+"</span2></td>"
+		        				+"<td ><span2 class='lenghao'>"+data.shi.lotteryno+"</span2></td>"
+		        				+"<td ><span2 class='lenghao'>"+data.ge.lotteryno+"</span2></td>"
+		        				+"<td></td>"
+		        				+"<td></td>"
+		        				+"<td></td>"
+		        				+"</tr>";
+			        		for(var i=0;i<data.list.length;i++){
+			        			var actionData=data.list[i];
+			        			str=str+"<tr>"
+			        				+"<td>第"+actionData.actionno+"期</td>"
+			        				+"<td><span>"+actionData.lotteryno.substr(0,1)+"</span></td>"
+			        				+"<td><span>"+actionData.lotteryno.substr(1,1)+"</span></td>"
+			        				+"<td><span>"+actionData.lotteryno.substr(2,1)+"</span></td>"
+			        				+"<td><span>"+actionData.lotteryno.substr(3,1)+"</span></td>"
+			        				+"<td><span>"+actionData.lotteryno.substr(4,1)+"</span></td>"
+			        				str +="<td><span style='font-size:0.75rem;background:#0066CC'>特"+actionData.th+"</span></td>";
+			        				+"<td><span style='background:#F60;' >"+actionData.lh+"</span></td>"
+			        				if(actionData.lh=='龙'){
+			        					str +="<td><span style='background:#099;' >"+actionData.lh+"</span></td>";
+			        				}else if(actionData.lh=='虎'){
+			        					str +="<td><span style='background:#F20;' >"+actionData.lh+"</span></td>";
+			        				}else{
+			        					str +="<td><span style='background:#0066CC;' >"+actionData.lh+"</span></td>";
+			        				}
+			        				str +="</tr>";
+			        				
+
+				        			strdx=strdx+"<tr>"
+				        				+"<td>第"+actionData.actionno+"期&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>";
+				        				if(actionData.dx1=='大'){
+					        				strdx +="<td><span style='background:#099;' >"+actionData.dx1+"</span></td>";
+				        				}else{
+					        				strdx +="<td><span>"+actionData.dx1+"</span></td>";
+				        				}
+				        				if(actionData.dx2=='大'){
+				        					strdx +="<td><span style='background:#099;' >"+actionData.dx2+"</span></td>";
+				        				}else{
+				        					strdx +="<td><span>"+actionData.dx2+"</span></td>";
+				        				}
+				        				if(actionData.dx3=='大'){
+				        					strdx +="<td><span style='background:#099;' >"+actionData.dx3+"</span></td>";
+				        				}else{
+				        					strdx +="<td><span>"+actionData.dx3+"</span></td>";
+				        				}
+				        				if(actionData.dx4=='大'){
+				        					strdx +="<td><span style='background:#099;' >"+actionData.dx4+"</span></td>";
+				        				}else{
+				        					strdx +="<td><span>"+actionData.dx4+"</span></td>";
+				        				}
+				        				if(actionData.dx5=='大'){
+				        					strdx +="<td><span style='background:#099;' >"+actionData.dx5+"</span></td>";
+				        				}else{
+				        					strdx +="<td><span>"+actionData.dx5+"</span></td>";
+				        				}
+				        				strdx +="<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>";
+				        				+"<td></td>"
+				        				strdx +="<td></td>";
+				        				strdx +="</tr>";
+				        				
+
+					        			strds=strds+"<tr>"
+					        				+"<td>第"+actionData.actionno+"期&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>";
+					        				if(actionData.ds1=='双'){
+					        					strds +="<td><span style='background:#099;' >"+actionData.ds1+"</span></td>";
+					        				}else{
+					        					strds +="<td><span>"+actionData.ds1+"</span></td>";
+					        				}
+					        				if(actionData.ds2=='双'){
+					        					strds +="<td><span style='background:#099;' >"+actionData.ds2+"</span></td>";
+					        				}else{
+					        					strds +="<td><span>"+actionData.ds2+"</span></td>";
+					        				}
+					        				if(actionData.ds3=='双'){
+					        					strds +="<td><span style='background:#099;' >"+actionData.ds3+"</span></td>";
+					        				}else{
+					        					strds +="<td><span>"+actionData.ds3+"</span></td>";
+					        				}
+					        				if(actionData.ds4=='双'){
+					        					strds +="<td><span style='background:#099;' >"+actionData.ds4+"</span></td>";
+					        				}else{
+					        					strds +="<td><span>"+actionData.ds4+"</span></td>";
+					        				}
+					        				if(actionData.ds5=='双'){
+					        					strds +="<td><span style='background:#099;' >"+actionData.ds5+"</span></td>";
+					        				}else{
+					        					strds +="<td><span>"+actionData.ds5+"</span></td>";
+					        				}
+					        				strds +="<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>";
+					        				+"<td></td>"
+					        				strds +="<td></td>";
+					        				strds +="</tr>";
+			        		}
+			        		$('#tabsa').html(str);
+			        		$('#tabsb').html(strdx);
+			        		$('#tabsc').html(strds);
+			        		
+			        		jumi.alert({
+			    				title:'分分彩走势图',
+			    				content:document.getElementById('tableTrend'),
+			    				button:false
+			    			})
+			        	}else{
+			        	}
+			        },
+			        error:function(msg){
+			        }
+			    });
+		});
+		
+		//投注
+		$(document).on('click','#addBetting',function(){
+			if(open!=1){
+				jumi.tips("游戏未开放！");
+				return;
+			}
+			if(nextenable==false){
+				jumi.tips("投注已截止，请等待下期投注！");
+				return;
+			}
+			var allStr = '';
+			var type = $('.tab-handle li.active').data('value'); //彩票种类
+			var typeStr = '';
+			var min=0;
+			var max=0;
+			var played_code=0;
+			switch (type){
+				case 1 : typeStr = '特码';played_code=2;min=1;max=5000;break;
+				case 2 : typeStr = '单码';played_code=1;min=1;max=50000;break;
+				case 7 : typeStr = '组选';played_code=13;min=1;max=3000;break;
+				case 8 : typeStr = '定位';played_code=200;min=1;max=5000;break;
+				case 3 : typeStr = '连号';
+				var nums = $('#linknumber').val();
+				if(nums.length>5 || nums.length<2){
+					jumi.tips("请选择2-5个号码进行投注！");
+					return;
+				}
+				if(nums.length==2){
+					min=1;max=500;
+				}
+				if(nums.length==3){
+					min=1;max=350;
+				}
+				if(nums.length==4){
+					min=1;max=200;
+				}
+				if(nums.length==5){
+					min=1;max=100;
+				}
+				played_code=3;break;
+				case 4 : typeStr = '龙虎';
+				$('#tabs4 li.active').each(function(){
+					nums = $(this).text();
+				});
+				if(nums=='合'){
+					played_code=5;
+					min=1;
+					max=500;
+				}else{
+					played_code=4;
+					min=1;
+					max=50000;
+				}
+				break;
+			}
+			console.log(typeStr)
+			var price=parseFloat($('#price').val());
+			var summoney=price;
+			if(isNaN(price) || price<0){
+				jumi.tips("请输入有效投注金额！");
+				return;
+			}
+			var coin=$('#coin').text();
+			var coin_=parseFloat(coin);
+			if(price<min){
+				jumi.tips("每注金额不能小于"+min+"元！");
+				return;
+			}
+			if(price>max){
+				jumi.tips("每注金额不能大于"+max+"元！");
+				return;
+			}
+			//号码
+			if(type == 1){
+				var nums = '';
+				$('#tabs1 li.active').each(function(){
+					nums += $(this).text();
+				});
+				if(nums==''){
+					jumi.tips("请选择投注内容！");
+					return;
+				}
+				summoney=price*nums.length;
+				if(summoney>coin_){
+					jumi.tips("本单总投注"+summoney+" 不能大于可用余额！");
+					return;
+				}
+				
+				allStr	+= ''
+						+'<p>投注期号：<span>第'+ nextactionno +'期</span></p>'
+						+'<p>投注玩法：<span>'+ typeStr +'</span></p>'
+						+'<p>投注号码：<span class="clr-orange">'+ nums +'</span></p>'
+						+'<p>投注金额：<span class="clr-orange">'+ summoney +'</span> 元</p>'
+			}else if(type == 7){
+				var nums = '';
+				var count=0;
+				$('#tabs7 li.active').each(function(){
+					if(nums==''){
+						nums = $(this).text();
+					}else{
+						nums =nums+','+$(this).text();
+					}
+					count=count+1;
+				});
+				if(nums==''){
+					jumi.tips("请选择投注内容！");
+					return;
+				}
+				summoney=price*count;
+				if(summoney>coin_){
+					jumi.tips("本单总投注"+summoney+" 不能大于可用余额！");
+					return;
+				}
+				allStr	+= ''
+						+'<p>投注期号：<span>第'+ nextactionno +'期</span></p>'
+						+'<p>投注玩法：<span>'+ typeStr +'</span></p>'
+						+'<p>投注号码：<span class="clr-orange">'+ nums +'</span></p>'
+						+'<p>投注金额：<span class="clr-orange">'+summoney+'</span> 元</p>'
+			}else if(type == 2){
+				var nums = '';
+				$('#tabs2 li.active').each(function(){
+					nums += $(this).text();
+				});
+				if(nums==''){
+					jumi.tips("请选择投注内容！");
+					return;
+				}
+				summoney=price*nums.length;
+				if(summoney>coin_){
+					jumi.tips("本单总投注"+summoney+" 不能大于可用余额！");
+					return;
+				}
+				allStr	+= ''
+						+'<p>投注期号：<span>第'+ nextactionno +'期</span></p>'
+						+'<p>投注玩法：<span>'+ typeStr +'</span></p>'
+						+'<p>投注号码：<span class="clr-orange">'+ nums +'</span></p>'
+						+'<p>投注金额：<span class="clr-orange">'+summoney+'</span> 元</p>'
+			}else if(type == 8){
+				var nums = '';
+				var wnums = '';
+				var qnums = '';
+				var bnums = '';
+				var snums = '';
+				var gnums = '';
+				var count=0;
+				$('#tabs8 ul.number.wan li.active').each(function(){
+					wnums += $(this).text();
+					count++;
+				});
+				$('#tabs8 ul.number.qian li.active').each(function(){
+					qnums += $(this).text();
+					count++;
+				});
+				$('#tabs8 ul.number.bai li.active').each(function(){
+					bnums += $(this).text();
+					count++;
+				});
+				$('#tabs8 ul.number.shi li.active').each(function(){
+					snums += $(this).text();
+					count++;
+				});
+				$('#tabs8 ul.number.ge li.active').each(function(){
+					gnums += $(this).text();
+					count++;
+				});
+				if(wnums=='' && qnums=='' && bnums=='' && snums=='' && gnums==''){
+					jumi.tips("请选择投注内容！");
+					return;
+				}
+				if(wnums!=''){
+					if(nums!=''){
+						nums=nums+',万位('+wnums+')';
+					}else{
+						nums='万位('+wnums+')';
+					}
+				}
+				if(qnums!=''){
+					if(nums!=''){
+						nums=nums+',千位('+qnums+')';
+					}else{
+						nums='千位('+qnums+')';
+					}
+				}
+				if(bnums!=''){
+					if(nums!=''){
+						nums=nums+',百位('+bnums+')';
+					}else{
+						nums='百位('+bnums+')';
+					}
+				}
+				if(snums!=''){
+					if(nums!=''){
+						nums=nums+',十位('+snums+')';
+					}else{
+						nums='十位('+snums+')';
+					}
+				}
+				if(gnums!=''){
+					if(nums!=''){
+						nums=nums+',个位('+gnums+')';
+					}else{
+						nums='个位('+gnums+')';
+					}
+				}
+				summoney=price*count;
+				if(summoney>coin_){
+					jumi.tips("本单总投注"+summoney+" 不能大于可用余额！");
+					return;
+				}
+				allStr	+= ''
+						+'<p>投注期号：<span>第'+ nextactionno +'期</span></p>'
+						+'<p>投注玩法：<span>'+ typeStr +'</span></p>'
+						+'<p>投注号码：<span class="clr-orange">'+ nums +'</span></p>'
+						+'<p>投注金额：<span class="clr-orange">'+summoney+'</span> 元</p>'
+			}else if(type == 3){
+				if(price>coin_){
+					jumi.tips("投注金额不能大于可用余额！");
+					return;
+				}
+				var nums = $('#linknumber').val();
+				allStr	+= ''
+						+'<p>投注期号：<span>第'+ nextactionno +'期</span></p>'
+						+'<p>投注玩法：<span>'+ typeStr +'</span></p>'
+						+'<p>投注号码：<span class="clr-orange">'+ nums +'</span></p>'
+						+'<p>投注金额：<span class="clr-orange">'+ $('#price').val() +'</span> 元</p>'
+			}else if(type == 4){
+				if(price>coin_){
+					jumi.tips("投注金额不能大于可用余额！");
+					return;
+				}
+				var nums = '';
+				$('#tabs4 li.active').each(function(){
+					nums += $(this).text();
+				});
+				if(nums==''){
+					jumi.tips("请选择投注内容！");
+					return;
+				}
+				allStr	+= ''
+						+'<p>投注期号：<span>第'+ nextactionno +'期</span></p>'
+						+'<p>投注玩法：<span>'+ typeStr +'</span></p>'
+						+'<p>投注号码：<span class="clr-orange">'+ nums +'</span></p>'
+						+'<p>投注金额：<span class="clr-orange">'+ $('#price').val() +'</span> 元</p>'
+			}
+			
+			jumi.alert({
+				title:'投注确认',
+				content:allStr,
+				button:[{
+					value:'确认',
+					callback:function(){
+						var para={};
+						 para.actionmoney=summoney;
+						 para.played_code=played_code;
+						 para.actiondata=nums;
+						 para.actionno=nextactionno;
+						 para.token = $('#token').val();
+						 $.ajax({
+						        type:'post',
+						        url:'/addBet2JsonTx.action',
+						        data:para,
+						        cache:false,
+						        dataType:'json',
+						        success:function(data){
+						        	if(data.success) {
+						        		$('#coin').text(data.coin);
+						        		jumi.tips(data.msg);
+						        		setMybet(data.bets);
+						        		$('#token').val(data.token);
+						        	}else{
+						        		$('#token').val(data.token);
+						        		if(data.flag=='3'){
+						        			jumi.alert({
+							        			title:"温馨提示",
+							        			content:data.msg,
+							        			button:[{
+							        				value:"知道了",
+							        				autofocus:true,
+							        				callback:function(){
+							        				}
+							        			}]
+							        		})
+						        		}else{
+							        		jumi.tips(data.msg);
+						        		}
+						        	}
+						        },
+						        error:function(msg){
+						        	//alert('error：' + msg);
+						        }
+						    });
+					}
+				}]
+			});
+			
+			//复原
+			$('.number li').removeClass('active');
+			$('.number2 li').removeClass('active');
+			$('#price').val('');
+			$('#linknumber').val('');
+			lh_nums = '';
+			isscroll=true;
+		});
+		
+		function setMybet(bets){
+			if(bets==null || bets.length<0){
+				return;
+			}
+			for(var i=0;i<bets.length;i++){
+				var bet=bets[i];
+				var str=str+"<tr>"+
+					"<td style='font-size:0.75rem;text-align:left;'>"+bet.actionno+"</td>"+
+					"<td style='font-size:0.75rem;'>"+bet.playedName+"</td>"+
+					"<td style='font-size:0.75rem;'>"+bet.actiondata+"</td>"+
+					"<td style='font-size:0.75rem;'>"+bet.actionmoney+"</td>"+
+					"<td style='font-size:0.75rem;'>"+bet.lotteryno+"</td>";
+					if(bet.jj=='未开奖'){
+						str=str+"<td style='font-size:0.75rem;color:blue;'>"+bet.jj+"</td>";
+					}else if(bet.jj=='已撤单'){
+						str=str+"<td style='font-size:0.75rem;'>"+bet.jj+"</td>";
+					}else if(bet.jj=='未中奖'){
+						str=str+"<td style='font-size:0.75rem;color:green;'>"+bet.jj+"</td>";
+					}else{
+						str=str+"<td style='font-size:0.75rem;color:red;'>"+bet.jj+"</td>";
+					}
+				if(bet.canDelete==1){
+					str=str+"<td style='text-align:right;font-size:0.75rem;'><a href='javascript:void(0)'  data-money='"+bet.actionmoney+"' data-actionno='"+bet.actionno+"' data-betid='"+bet.id+"' class='button button-primary button-xsm'>撤单</a></td>";
+				}else{
+					str=str+"<td style='text-align:right;font-size:0.75rem;'>——&nbsp;&nbsp;&nbsp;</td>";
+				}
+					str=str+"</tr>";
+			}
+			str=str+"<tr>"+
+        		"<td colspan='7'><a href='/wdtj.action'>点此查看今日投注记录</a></td>"+
+       			"</tr>";
+			$('#mybet').html(str);
+		}
+		//特码效果
+		$(document).on('click','#tabs1 ul li',function(){
+			isscroll=false;
+			var $this = $(this);
+			var bool = $this.hasClass('active');
+			!bool ? $this.addClass('active') : $this.removeClass('active');
+		});
+		$(document).on('click','#temada',function(){
+			$('#tabs1 li').each(function(){
+				var $this = $(this);
+				var v= $this.text();
+				if(v>4){
+					$this.addClass('active');
+				}else{
+					$this.removeClass('active');
+				}
+			});
+		});
+		$(document).on('click','#temax',function(){
+			$('#tabs1 li').each(function(){
+				var $this = $(this);
+				var v= $this.text();
+				if(v>4){
+					$this.removeClass('active');
+				}else{
+					$this.addClass('active');
+				}
+			});
+		});
+		$(document).on('click','#temas',function(){
+			$('#tabs1 li').each(function(){
+				var $this = $(this);
+				var v= $this.text();
+				if(v==1 || v==3 || v==5 || v==7 || v==9){
+					$this.removeClass('active');
+				}else{
+					$this.addClass('active');
+				}
+			});
+		});
+		$(document).on('click','#temad',function(){
+			$('#tabs1 li').each(function(){
+				var $this = $(this);
+				var v= $this.text();
+				if(v==1 || v==3 || v==5 || v==7 || v==9){
+					$this.addClass('active');
+				}else{
+					$this.removeClass('active');
+				}
+			});
+		});
+		$(document).on('click','#temaq',function(){
+			$('#tabs1 li').each(function(){
+				var $this = $(this);
+				var v= $this.text();
+				$this.removeClass('active');
+			});
+		});
+		
+		$(document).on('click','#wanda',function(){
+			$('#tabs8 ul.number.wan li').each(function(){
+				var $this = $(this);
+				var v= $this.text();
+				if(v>4){
+					$this.addClass('active');
+				}else{
+					$this.removeClass('active');
+				}
+			});
+		});
+		$(document).on('click','#wanx',function(){
+			$('#tabs8 ul.number.wan li').each(function(){
+				var $this = $(this);
+				var v= $this.text();
+				if(v>4){
+					$this.removeClass('active');
+				}else{
+					$this.addClass('active');
+				}
+			});
+		});
+		$(document).on('click','#wans',function(){
+			$('#tabs8 ul.number.wan li').each(function(){
+				var $this = $(this);
+				var v= $this.text();
+				if(v==1 || v==3 || v==5 || v==7 || v==9){
+					$this.removeClass('active');
+				}else{
+					$this.addClass('active');
+				}
+			});
+		});
+		$(document).on('click','#wand',function(){
+			$('#tabs8 ul.number.wan li').each(function(){
+				var $this = $(this);
+				var v= $this.text();
+				if(v==1 || v==3 || v==5 || v==7 || v==9){
+					$this.addClass('active');
+				}else{
+					$this.removeClass('active');
+				}
+			});
+		});
+		$(document).on('click','#wanq',function(){
+			$('#tabs8 ul.number.wan li').each(function(){
+				var $this = $(this);
+				var v= $this.text();
+				$this.removeClass('active');
+			});
+		});
+		
+		$(document).on('click','#qianda',function(){
+			$('#tabs8 ul.number.qian li').each(function(){
+				var $this = $(this);
+				var v= $this.text();
+				if(v>4){
+					$this.addClass('active');
+				}else{
+					$this.removeClass('active');
+				}
+			});
+		});
+		$(document).on('click','#qianx',function(){
+			$('#tabs8 ul.number.qian li').each(function(){
+				var $this = $(this);
+				var v= $this.text();
+				if(v>4){
+					$this.removeClass('active');
+				}else{
+					$this.addClass('active');
+				}
+			});
+		});
+		$(document).on('click','#qians',function(){
+			$('#tabs8 ul.number.qian li').each(function(){
+				var $this = $(this);
+				var v= $this.text();
+				if(v==1 || v==3 || v==5 || v==7 || v==9){
+					$this.removeClass('active');
+				}else{
+					$this.addClass('active');
+				}
+			});
+		});
+		$(document).on('click','#qiand',function(){
+			$('#tabs8 ul.number.qian li').each(function(){
+				var $this = $(this);
+				var v= $this.text();
+				if(v==1 || v==3 || v==5 || v==7 || v==9){
+					$this.addClass('active');
+				}else{
+					$this.removeClass('active');
+				}
+			});
+		});
+		$(document).on('click','#qianq',function(){
+			$('#tabs8 ul.number.qian li').each(function(){
+				var $this = $(this);
+				var v= $this.text();
+				$this.removeClass('active');
+			});
+		});
+		
+		$(document).on('click','#baida',function(){
+			$('#tabs8 ul.number.bai li').each(function(){
+				var $this = $(this);
+				var v= $this.text();
+				if(v>4){
+					$this.addClass('active');
+				}else{
+					$this.removeClass('active');
+				}
+			});
+		});
+		$(document).on('click','#baix',function(){
+			$('#tabs8 ul.number.bai li').each(function(){
+				var $this = $(this);
+				var v= $this.text();
+				if(v>4){
+					$this.removeClass('active');
+				}else{
+					$this.addClass('active');
+				}
+			});
+		});
+		$(document).on('click','#bais',function(){
+			$('#tabs8 ul.number.bai li').each(function(){
+				var $this = $(this);
+				var v= $this.text();
+				if(v==1 || v==3 || v==5 || v==7 || v==9){
+					$this.removeClass('active');
+				}else{
+					$this.addClass('active');
+				}
+			});
+		});
+		$(document).on('click','#baid',function(){
+			$('#tabs8 ul.number.bai li').each(function(){
+				var $this = $(this);
+				var v= $this.text();
+				if(v==1 || v==3 || v==5 || v==7 || v==9){
+					$this.addClass('active');
+				}else{
+					$this.removeClass('active');
+				}
+			});
+		});
+		$(document).on('click','#baiq',function(){
+			$('#tabs8 ul.number.bai li').each(function(){
+				var $this = $(this);
+				var v= $this.text();
+				$this.removeClass('active');
+			});
+		});
+		
+		$(document).on('click','#shida',function(){
+			$('#tabs8 ul.number.shi li').each(function(){
+				var $this = $(this);
+				var v= $this.text();
+				if(v>4){
+					$this.addClass('active');
+				}else{
+					$this.removeClass('active');
+				}
+			});
+		});
+		$(document).on('click','#shix',function(){
+			$('#tabs8 ul.number.shi li').each(function(){
+				var $this = $(this);
+				var v= $this.text();
+				if(v>4){
+					$this.removeClass('active');
+				}else{
+					$this.addClass('active');
+				}
+			});
+		});
+		$(document).on('click','#shis',function(){
+			$('#tabs8 ul.number.shi li').each(function(){
+				var $this = $(this);
+				var v= $this.text();
+				if(v==1 || v==3 || v==5 || v==7 || v==9){
+					$this.removeClass('active');
+				}else{
+					$this.addClass('active');
+				}
+			});
+		});
+		$(document).on('click','#shid',function(){
+			$('#tabs8 ul.number.shi li').each(function(){
+				var $this = $(this);
+				var v= $this.text();
+				if(v==1 || v==3 || v==5 || v==7 || v==9){
+					$this.addClass('active');
+				}else{
+					$this.removeClass('active');
+				}
+			});
+		});
+		$(document).on('click','#shiq',function(){
+			$('#tabs8 ul.number.shi li').each(function(){
+				var $this = $(this);
+				var v= $this.text();
+				$this.removeClass('active');
+			});
+		});
+		
+		$(document).on('click','#geda',function(){
+			$('#tabs8 ul.number.ge li').each(function(){
+				var $this = $(this);
+				var v= $this.text();
+				if(v>4){
+					$this.addClass('active');
+				}else{
+					$this.removeClass('active');
+				}
+			});
+		});
+		$(document).on('click','#gex',function(){
+			$('#tabs8 ul.number.ge li').each(function(){
+				var $this = $(this);
+				var v= $this.text();
+				if(v>4){
+					$this.removeClass('active');
+				}else{
+					$this.addClass('active');
+				}
+			});
+		});
+		$(document).on('click','#ges',function(){
+			$('#tabs8 ul.number.ge li').each(function(){
+				var $this = $(this);
+				var v= $this.text();
+				if(v==1 || v==3 || v==5 || v==7 || v==9){
+					$this.removeClass('active');
+				}else{
+					$this.addClass('active');
+				}
+			});
+		});
+		$(document).on('click','#ged',function(){
+			$('#tabs8 ul.number.ge li').each(function(){
+				var $this = $(this);
+				var v= $this.text();
+				if(v==1 || v==3 || v==5 || v==7 || v==9){
+					$this.addClass('active');
+				}else{
+					$this.removeClass('active');
+				}
+			});
+		});
+		$(document).on('click','#geq',function(){
+			$('#tabs8 ul.number.ge li').each(function(){
+				var $this = $(this);
+				var v= $this.text();
+				$this.removeClass('active');
+			});
+		});
+		//单码效果
+		$(document).on('click','#tabs2 ul li',function(){
+			isscroll=false;
+			var $this = $(this);
+			var bool = $this.hasClass('active');
+			!bool ? $this.addClass('active') : $this.removeClass('active');
+		});
+		
+		//连号效果
+		var lh_nums = '';
+		$('#tabs3 ul li').on('touchstart',function(){
+			isscroll=false;
+			$(this).addClass('active');
+			var num = $(this).find('a').text();
+			lh_nums += num;
+			$('#linknumber').val(lh_nums);
+		}).on('touchend',function(){
+			$(this).removeClass('active');
+		})
+		
+		//清除重选
+		$('#resetNumber').on('click',function(){
+			isscroll=false;
+			$('#linknumber').val('');
+			lh_nums = '';
+		});
+		
+		//龙虎效果
+		$(document).on('click','#tabs4 ul li',function(){
+			isscroll=false;
+			var $this = $(this);
+			var bool = $this.hasClass('active');
+			!bool ? $this.addClass('active').siblings().removeClass('active') : $this.removeClass('active');
+		});
+		
+		//
+		$(document).on('click','#tabs7 ul.number2 li',function(){
+			isscroll=false;
+			var $this = $(this);
+			var bool = $this.hasClass('active');
+			!bool ? $this.addClass('active') : $this.removeClass('active');
+		});
+
+		//万位
+		$(document).on('click','#tabs8 ul.number.wan li',function(){
+			isscroll=false;
+			var $this = $(this);
+			var bool = $this.hasClass('active');
+			!bool ? $this.addClass('active') : $this.removeClass('active');
+		});
+		//千位
+		$(document).on('click','#tabs8 ul.number.qian li',function(){
+			isscroll=false;
+			var $this = $(this);
+			var bool = $this.hasClass('active');
+			!bool ? $this.addClass('active') : $this.removeClass('active');
+		});
+		//百位
+		$(document).on('click','#tabs8 ul.number.bai li',function(){
+			isscroll=false;
+			var $this = $(this);
+			var bool = $this.hasClass('active');
+			!bool ? $this.addClass('active') : $this.removeClass('active');
+		});
+		//十位
+		$(document).on('click','#tabs8 ul.number.shi li',function(){
+			isscroll=false;
+			var $this = $(this);
+			var bool = $this.hasClass('active');
+			!bool ? $this.addClass('active') : $this.removeClass('active');
+		});
+		//个位
+		$(document).on('click','#tabs8 ul.number.ge li',function(){
+			isscroll=false;
+			var $this = $(this);
+			var bool = $this.hasClass('active');
+			!bool ? $this.addClass('active') : $this.removeClass('active');
+		});
+		
+		//撤单
+		$(document).on('click','#tabs6 .button',function(){
+			var actionno= $(this).attr("data-actionno");
+			var betid= $(this).attr("data-betid");
+			var money= $(this).attr("data-money");
+			var para={};
+			 para.actionno=actionno;
+			 para.betid=betid;
+			 para.money=money;
+			 $.ajax({
+			        type:'post',
+			        url:'/playerDelTxBet.action',
+			        data:para,
+			        cache:false,
+			        dataType:'json',
+			        success:function(data){
+			        	if(data.success) {
+			        		jumi.tips(data.msg);
+			        		$('#coin').text(data.coin);
+			        		setMybet(data.bets);
+			        	}else{
+			        		jumi.tips(data.msg);
+			        	}
+			        },
+			        error:function(msg){
+			        	//alert('error：' + msg);
+			        }
+			    });
+		});
+		////////////////////////////////////////////////////////////////////////////////////////////////交流区
+		//回到顶部top
+		$('#top').click(function(){
+			$(window).scrollTop(0);
+			isscroll=false;
+		})
+		
+		$("#send").click(function(){
+			if($('#content').val()==''){
+				jumi.tips("请输入发送内容！");
+	    		return;
+			}
+			var para={};
+			 para.content=$("#content").val();
+			 $.ajax({
+			        type:'post',
+			        url:'/addPlayerNews.action',
+			        data:para,
+			        cache:false,
+			        dataType:'json',
+			        success:function(data){
+			        	if(data.success) {
+			        		$('#content').val("").focus();
+			        		toInsertMy(data);
+			    			isscroll=true;
+			        		scrollBottom();
+			        	}else{
+			        		jumi.tips("发送失败！");
+			        	}
+			        },
+			        error:function(msg){
+			        	//alert('error：' + msg);
+			        }
+			    });
+		});
+		
+		//插入自己的信息
+		function toInsertMy(data){
+			var str = ''
+				+'<div class="chat-item-my">'
+				+'<div class="time">'+ data.addtimeStr +'</div>'
+				+'<ul class="myinfo">'
+				+'	<li><span>'+ data.content +'</span></li>';
+				if(data.litpic && data.litpic!=''){
+					str+='	<li><img src="'+data.litpic+'" data-src="" style="width:3rem;height:3rem;border-radius:6px;"></li>'
+				}else{
+					str+='	<li><img src="http://image.8nzmt.cn/iphone/images/default.jpg" data-src="" style="width:3rem;height:3rem;border-radius:6px;"></li>'
+				}
+				str+='</ul>'
+				+'</div>'
+			$('#j-chat').append(str);
+		}
+		
+		var keysList={};
+		//插入对方的信息
+		function toInsertOthers(resultList,_websocket){
+			var str="";
+			if(resultList==null || resultList.length<0){
+				return;
+			}
+			
+			
+			for(var i=0;i<resultList.length;i++){
+				if(keysList[resultList[i]]) {
+					continue;
+				}
+				keysList[resultList[i].newkey]=1;
+				if(_websocket!=null){
+	        		_websocket.send(clientId+"+"+resultList[i].newkey);
+				}
+				str+='<div class="chat-item-others">'
+				+'<div class="time">'+ resultList[i].timeStr +'</div>'
+				+'<ul class="othersinfo">';
+				if(resultList[i].headimgurl && resultList[i].headimgurl!=''){
+					str+='	<li><img src="'+resultList[i].headimgurl+'" data-src="" style="width:3rem;height:3rem;border-radius:6px;"></li>'
+				}else{
+					str+='	<li><img src="http://image.8nzmt.cn/iphone/images/default.jpg" data-src="" style="width:3rem;height:3rem;border-radius:6px;"></li>'
+				}
+				if(resultList[i].newtype=='3'){
+					str+='	<li><span><font color="red">【'+resultList[i].nickname+'】'+ resultList[i].info +'</font></span></li>';
+				}else{
+					str+='	<li><span>【'+resultList[i].nickname+'】'+ resultList[i].info +'</span></li>';
+				}
+				str+='</ul>'
+				+'</div>';
+			}
+			$('#j-chat').append(str);
+		}
+		
+		//滚动到底部
+		function scrollBottom(){
+			if(isscroll==false){
+				return;
+			}
+			var chatboxh = $('#j-chatbox').outerHeight(true);
+			var chath = $('#j-chat').outerHeight(true);
+			var contenth = $('#content').outerHeight(true);
+			var winh = $(window).outerHeight(true);
+			
+			if(chath < chatboxh){
+				$('body').scrollTop(chath + contenth + 60);
+			}else{
+				$('#j-chatbox').scrollTop(chath - chatboxh + contenth + 60);
+				$('body').scrollTop(winh);
+			}
+// 			var winh = window.innerHeight;
+// 			var bodyh = $('body').outerHeight(true);
+// 			$('body').scrollTop(bodyh - winh + 60);
+		}
+// 		scrollBottom();
+		 function toSetIntervalflag(){
+			setInterval(function(){
+				interval=true;
+			},5000);
+		} 
+		 toSetIntervalflag();
+		//侦听新信息
+		 function toSetInterval(){
+			var para={};
+			setInterval(function(){
+				if(interval==false){
+					return;
+				}
+				$.ajax({
+			        type:'post',
+			        url:'/roomIntervalTx.action',
+			        data:para,
+			        cache:false,
+			        dataType:'json',
+			        success:function(data){
+			        	if(data.success) {
+			        		toInsertOthers(data.newsList,null);
+			        		if(data.newsList.length>0){
+			        			scrollBottom();
+			        		}
+			        		//---------------------------------------------头部开奖信息更新开始
+			        		nextactionno=data.nextactionno;
+			        		nextenable=data.nextenable;
+			        		$("#curactionno").text("第"+data.curactionno+"期");
+			        		$("#nextactionno").text("第"+data.nextactionno+"期");
+			        		$("#nextmsg").text(data.nextmsg);
+			        		$("#coin").text(data.coin);
+			        		var kjzstyle=document.getElementById("kjz").style.display;
+			        		if(data.kjz){
+			        			if(kjzstyle=='none'){
+				        			setMybet(data.bets);
+			        			}
+			        			document.getElementById("kjz").style.display="";
+			        			document.getElementById("sjz").style.display="none";
+			        		}else{
+			        			//if(kjzstyle==''){
+				        			setMybet(data.bets);
+			        			//}
+			        			document.getElementById("kjz").style.display="none";
+			        			document.getElementById("sjz").style.display="";
+			        			$("#lotteryno1").text(data.lotteryno1);
+			        			$("#lotteryno2").text(data.lotteryno2);
+			        			$("#lotteryno3").text(data.lotteryno3);
+			        			$("#lotteryno4").text(data.lotteryno4);
+			        			$("#lotteryno5").text(data.lotteryno5);
+			        			$("#th").text('特'+data.th);
+			        			$("#lh").text(data.lh);
+			        		}
+			        	}else{
+			        		//jumi.tips("发送失败！");
+			        	}
+			        },
+			        error:function(msg){
+			        }
+			    });
+			},2000);
+		} 
+ 		toSetInterval();
+		
+ 		/*
+		var url = 'ws://www.botai888.com/socket.ws?clientId='+clientId;
+		console.log("Current ClientId:"+clientId);
+		var CallCenter = {
+				init:function(url){
+					var _websocket = new ReconnectingWebSocket(url);
+					_websocket.debug = true;
+					_websocket.onmessage = function(evt) {
+						console.log("onmessage");
+						var data=JSON.parse(evt.data);
+						
+						if(data.success) {
+							interval=false;
+							toInsertOthers(data.newsList,_websocket);
+			        		if(data.newsList.length>0){
+			        			scrollBottom();
+			        		}
+			        		//---------------------------------------------头部开奖信息更新开始
+			        		nextactionno=data.nextactionno;
+			        		nextenable=data.nextenable;
+			        		$("#curactionno").text("第"+data.curactionno+"期");
+			        		$("#nextactionno").text("第"+data.nextactionno+"期");
+			        		$("#nextmsg").text(data.nextmsg);
+			        		$("#coin").text(data.coin);
+			        		var kjzstyle=document.getElementById("kjz").style.display;
+			        		if(data.kjz){
+			        			if(kjzstyle=='none'){
+				        			setMybet(data.bets);
+				        			isscroll=true;
+			        			}
+			        			document.getElementById("kjz").style.display="";
+			        			document.getElementById("sjz").style.display="none";
+			        		}else{
+			        			if(kjzstyle==''){
+				        			setMybet(data.bets);
+				        			isscroll=true;
+			        			}
+			        			document.getElementById("kjz").style.display="none";
+			        			document.getElementById("sjz").style.display="";
+			        			$("#lotteryno1").text(data.lotteryno1);
+			        			$("#lotteryno2").text(data.lotteryno2);
+			        			$("#lotteryno3").text(data.lotteryno3);
+			        			$("#lotteryno4").text(data.lotteryno4);
+			        			$("#lotteryno5").text(data.lotteryno5);
+			        			$("#th").text('特'+data.th);
+			        			$("#lh").text(data.lh);
+			        		}
+			        		//---------------------------------------------头部开奖信息更新结束
+			        		
+			        		
+			        	}else{
+			        		//jumi.tips("发送失败！");
+			        	}
+					};
+					_websocket.onerror = function(evt) {
+						console.log('Error occured: ' + evt);
+					};
+				}
+		};*/
+		//CallCenter.init(url);
+		
+// 		$(document).ready(function(){
+// 			$("#send").bind("click",function(){
+// 				$.ajax({
+// 					   type: "get",
+// 					   url: "api/send.action",
+// 					   data: "clientId="+$("#clientId").val()+"&message="+$("#message").val(),
+// 					   success: function(msg){
+// 					    	alert(msg.message);
+// 					   }
+// 					});
+// 			});
+// 		});
+ 		
+		////////////////////////////////////////////////////////////////////////////////////////////////交流区 end
+		
+	});
+	
+	
+	
+	
+</script>
+
+</body>
+</html>

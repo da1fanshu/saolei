@@ -1,0 +1,70 @@
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+.dno{
+    display: none;
+}
+.dblock{
+    display: block;
+}
+a{
+    color: #00a5e0;
+}
+.gamel{
+    margin-top: 1rem;
+    margin-left: 4%;
+    width: 45%;
+    height: 14rem;
+}
+.gamel img{
+    width: 100%;
+    height: 100%;
+}
+.gamer img{
+    width: 100%;
+    height: 100%;
+}
+.gamer{
+    margin-top: 1rem;
+    margin-right: 4%;
+    width: 45%;
+    height: 14rem;
+}
+.gamer div{
+    height: 6.5rem;
+}
+.foot{
+    width: 100%;
+    height: 3.3rem;
+    background-color: #fff;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    border-top: 2px solid #eee;
+    padding-top: .3rem;
+}
+.foot_list{
+    float: left;
+    width: 25%;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.3rem;
+    padding-top: .08rem;
+}
+.foot_list img{
+    height: 1.8rem;
+}
+
+.gametype_list{
+	float:left;
+  	width:49%;
+  	height:8rem;
+  	text-align: center;
+  	padding-top:.6rem;
+}
+.gametype_list img{
+  	height:7rem;
+}
