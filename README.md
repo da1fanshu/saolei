@@ -1,12 +1,7 @@
 ThinkCMF 正式版
 ===============
 
-### QQ群:
-`技术交流QQ群`:614927585 数据库文件已上传QQ群
 
-![输入图片说明](https://images.gitee.com/uploads/images/2019/1203/154003_951a2577_4917846.jpeg "3.jpg")
-![输入图片说明](https://images.gitee.com/uploads/images/2019/1203/154016_f9c90963_4917846.png "1.png")
-![输入图片说明](https://images.gitee.com/uploads/images/2019/1203/154038_ad3511e1_4917846.jpeg "2.jpg")
 
 ### ThinkCMF5主要特性
 * 基于全新 ThinkPHP5.0开发
@@ -475,7 +470,7 @@ https://www.kancloud.cn/thinkcmf/doc/327443
 
  **
 
-### 你们的资金支持是我开发下去的最大动力，谢谢你们的贡献！
+
 ** 
 
 
